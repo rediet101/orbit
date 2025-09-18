@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Card,
   CardContent,
@@ -6,10 +6,35 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
-import { Eye, Users, Award, Clock } from "lucide-react";
+import parse from "html-react-parser"; // 🔹 to render HTML safely
 
 function ServicePreview() {
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const res = await  fetch(import.meta.env.VITE_API_LINK + 'landing'); // 🔹 replace with your real API
+        const json = await res.json();
+        if (json.Services && Array.isArray(json.Services)) {
+          setServices(json.Services);
+        }
+      } catch (error) {
+        console.error("Error fetching services:", error);
+      }
+    };
+
+    fetchServices();
+  }, []);
+
+  if (services.length === 0) {
+    return (
+      <section id="services" className="py-20 bg-card text-center">
+        <p>Loading services...</p>
+      </section>
+    );
+  }
+
   return (
     <section id="services" className="py-20 bg-card">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -24,55 +49,36 @@ function ServicePreview() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[
-            {
-              title: "Comprehensive Eye Exams",
-              description:
-                "Thorough vision assessments using advanced diagnostic equipment",
-              icon: Eye,
-            },
-            {
-              title: "Prescription Glasses & Contacts",
-              description:
-                "Wide selection of frames and contact lenses for all prescriptions",
-              icon: Award,
-            },
-            {
-              title: "Pediatric Eye Care",
-              description:
-                "Specialized care for children's vision development and eye health",
-              icon: Users,
-            },
-            {
-              title: "Glaucoma & Cataract Screening",
-              description:
-                "Early detection and management of serious eye conditions",
-              icon: Eye,
-            },
-            {
-              title: "Computer Vision Syndrome",
-              description:
-                "Treatment for digital eye strain and dry eye conditions",
-              icon: Clock,
-            },
-            {
-              title: "Eye Health Education",
-              description: "Patient education and preventive care programs",
-              icon: Award,
-            },
-          ].map((service, index) => (
+          {services.map((service) => (
             <Card
-              key={index}
-              className=" hover:shadow-xl transition-all duration-300 border  border-violet-200 bg-gradient-to-br from-violet-100 to-white hover:scale-[1.02]"
+              key={service.id}
+              className="hover:shadow-xl transition-all duration-300 border border-violet-200 bg-gradient-to-br from-violet-100 to-white hover:scale-[1.02]"
             >
               <CardHeader>
-                <service.icon className="h-12 w-12 text-primary mb-4" />
+                {/* Show service image if available */}
+                {service.image_url?.length > 0 && (
+                  <img
+                    src={service.image_url[0]}
+                    alt={service.title}
+                    className="h-40 w-full object-cover rounded-lg mb-4"
+                  />
+                )}
                 <CardTitle className="font-heading">{service.title}</CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-base">
-                  {service.description}
+                  {parse(service.description)} {/* render HTML from backend */}
                 </CardDescription>
+                {/* {service.price && (
+                  <p className="mt-3 font-semibold text-primary">
+                    Price: {service.price} ETB
+                  </p>
+                )} */}
+                {/* {service.estimated_time && (
+                  <p className="text-sm text-muted-foreground">
+                    Estimated Time: {service.estimated_time}
+                  </p>
+                )} */}
               </CardContent>
             </Card>
           ))}

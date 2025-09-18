@@ -1,8 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
 
 function TestimonialPreview() {
+  const [testimonials, setTestimonials] = useState([]);
+
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      try {
+        const res = await  fetch(import.meta.env.VITE_API_LINK + 'landing'); // 🔹 replace with real endpoint
+        const json = await res.json();
+        if (json.Testimonials && Array.isArray(json.Testimonials)) {
+          setTestimonials(json.Testimonials);
+        }
+      } catch (error) {
+        console.error("Error fetching testimonials:", error);
+      }
+    };
+
+    fetchTestimonials();
+  }, []);
+
+  if (testimonials.length === 0) {
+    return (
+      <section className="py-20 bg-card text-center">
+        <p>Loading testimonials...</p>
+      </section>
+    );
+  }
+
   return (
     <section className="py-20 bg-card">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -17,41 +43,46 @@ function TestimonialPreview() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[
-            {
-              name: "Sarah Alemayehu",
-              text: "Excellent service and professional staff. My vision has improved significantly after getting my new glasses here.",
-              rating: 5,
-            },
-            {
-              name: "Michael Tadesse",
-              text: "The comprehensive eye exam was thorough and the doctor explained everything clearly. Highly recommended!",
-              rating: 5,
-            },
-            {
-              name: "Hanan Mohammed",
-              text: "Great experience with my child's eye exam. The staff was patient and made my daughter feel comfortable.",
-              rating: 5,
-            },
-          ].map((testimonial, index) => (
+          {testimonials.map((t) => (
             <Card
-              key={index}
-              className=" transition-all duration-300 border  border-violet-200 bg-gradient-to-br from-violet-100 to-white"
+              key={t.id}
+              className="transition-all duration-300 border border-violet-200 bg-gradient-to-br from-violet-100 to-white"
             >
-              <CardContent className="">
+              <CardContent>
                 <div className="space-y-4">
+                  {/* Stars (always 5 for now) */}
                   <div className="flex gap-1">
-                    {[...Array(testimonial.rating)].map((_, i) => (
+                    {[...Array(5)].map((_, i) => (
                       <Star
                         key={i}
                         className="h-4 w-4 fill-yellow-400 text-yellow-400"
                       />
                     ))}
                   </div>
-                  <p className="text-muted-foreground italic">
-                    "{testimonial.text}"
+
+                  {/* Testimonial Text */}
+                  <p className="text-muted-foreground italic whitespace-break-spaces">
+                    "{t.testimonial}"
                   </p>
-                  <p className="font-semibold">— {testimonial.name}</p>
+
+                  {/* Person Info */}
+                  <div className="flex items-center gap-3">
+                    {/* {t.image_url?.length > 0 && (
+                      <img
+                        src={t.image_url[0]}
+                        alt={t.name}
+                        className="h-10 w-10 rounded-full object-cover"
+                      />
+                    )} */}
+                    <p className="font-semibold">
+                      — {t.name}{" "}
+                      {t.age && (
+                        <span className="text-sm text-muted-foreground">
+                          ({t.age})
+                        </span>
+                      )}
+                    </p>
+                  </div>
                 </div>
               </CardContent>
             </Card>

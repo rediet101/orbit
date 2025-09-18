@@ -1,42 +1,27 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import { Mail, Linkedin } from "lucide-react";
-import male from "../../assets/ceo2.jpg";
-import female from "../../assets/female2.png";
+
 function LeadershipSection() {
-  const leadership = [
-    {
-      name: "Ahmed Hassan",
-      position: "Chief Executive Officer",
-      image: male,
-      bio: "Ahmed brings over 15 years of experience in international trade and agricultural exports. He founded Al-Anhar Trading with a vision to connect Ethiopian agriculture with global markets.",
-      email: "ahmed.hassan@alanhar.com",
-      linkedin: "#",
-    },
-    {
-      name: "Fatima Mohammed",
-      position: "Chief Operating Officer",
-      image: female,
-      bio: "Fatima oversees daily operations and supply chain management. Her expertise in logistics and quality control ensures our products meet international standards.",
-      email: "fatima.mohammed@alanhar.com",
-      linkedin: "#",
-    },
-    {
-      name: "Dr. Yohannes Tadesse",
-      position: "Head of Import Division",
-      image: male,
-      bio: "Dr. Yohannes leads our pharmaceutical and medical equipment imports. His medical background ensures we source the highest quality healthcare products.",
-      email: "yohannes.tadesse@alanhar.com",
-      linkedin: "#",
-    },
-    {
-      name: "Sarah Alemayehu",
-      position: "Export Manager",
-      image: female,
-      bio: "Sarah manages our agricultural export operations with expertise in quality assurance and international market development across Europe, Middle East, and Asia.",
-      email: "sarah.alemayehu@alanhar.com",
-      linkedin: "#",
-    },
-  ];
+  const [team, setTeam] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchTeam = async () => {
+      try {
+        const res = await fetch(import.meta.env.VITE_API_LINK + 'about');// 👈 replace with your endpoint
+        const data = await res.json();
+        setTeam(data.OurTeam); // based on the structure you shared
+      } catch (error) {
+        console.error("Error fetching team:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTeam();
+  }, []);
 
   return (
     <section className="py-20 bg-white">
@@ -51,49 +36,66 @@ function LeadershipSection() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {leadership.map((leader, index) => (
-            <div
-              key={index}
-              className=" rounded-2xl shadow-xl border border-violet-100 overflow-hidden bg-gradient-to-br from-violet-100 to-white"
-            >
-              <div className="p-8">
-                <div className="flex items-start space-x-6">
-                  <img
-                    src={leader.image || "/placeholder.svg"}
-                    alt={leader.name}
-                    className="w-32 h-32 rounded-xl object-cover shadow-lg"
-                  />
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-green-800 mb-2 font-montserrat">
-                      {leader.name}
-                    </h3>
-                    <p className="text-lg text-yellow-600 font-semibold mb-4 font-montserrat">
-                      {leader.position}
-                    </p>
-                    <p className="text-green-600 font-open-sans leading-relaxed mb-4">
-                      {leader.bio}
-                    </p>
-                    <div className="flex space-x-3">
-                      <a
-                        href={`mailto:${leader.email}`}
-                        className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center hover:bg-green-200 transition-colors"
-                      >
-                        <Mail className="w-5 h-5 text-green-600" />
-                      </a>
-                      <a
-                        href={leader.linkedin}
-                        className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center hover:bg-green-200 transition-colors"
-                      >
-                        <Linkedin className="w-5 h-5 text-green-600" />
-                      </a>
+        {loading ? (
+          <p className="text-center text-muted-foreground">Loading...</p>
+        ) : (
+          <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            {team.map((leader) => (
+              <div
+                key={leader.id}
+                className="rounded-2xl shadow-xl border border-violet-100 overflow-hidden bg-gradient-to-br from-violet-100 to-white"
+              >
+                <div className="p-8">
+                  <div className="flex items-start space-x-6">
+                    <img
+                      src={
+                        leader.image_url?.[0] ||
+                        leader.media?.[0]?.original_url ||
+                        "/placeholder.svg"
+                      }
+                      alt={leader.name}
+                      className="w-32 h-32 rounded-xl object-cover shadow-lg"
+                    />
+                    <div className="flex-1">
+                      <h3 className="text-2xl font-bold text-green-800 mb-2 font-montserrat">
+                        {leader.name}
+                      </h3>
+                      <p className="text-lg text-yellow-600 font-semibold mb-4 font-montserrat">
+                        {leader.Job_title}
+                      </p>
+                      <p className="text-green-600 font-open-sans leading-relaxed mb-4">
+                        {leader.description}
+                      </p>
+                      <div className="flex space-x-3">
+                        {leader.email && (
+                          <a
+                            href={`mailto:${leader.email}`}
+                            className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center hover:bg-green-200 transition-colors"
+                          >
+                            <Mail className="w-5 h-5 text-green-600" />
+                          </a>
+                        )}
+                        {leader.social_links?.map((link, idx) =>
+                          link.platform === "LinkedIn" ? (
+                            <a
+                              key={idx}
+                              href={link.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center hover:bg-green-200 transition-colors"
+                            >
+                              <Linkedin className="w-5 h-5 text-green-600" />
+                            </a>
+                          ) : null
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

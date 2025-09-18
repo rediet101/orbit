@@ -1,52 +1,63 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 
 function OurStory() {
+  const [story, setStory] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchStory = async () => {
+      try {
+        const res = await fetch(import.meta.env.VITE_API_LINK + 'about'); // 👈 replace with your endpoint
+        const data = await res.json();
+        setStory(data.data?.[0] || null);
+      } catch (error) {
+        console.error("Error fetching Our Story:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchStory();
+  }, []);
+
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <img
-              src="/src/assets/office3.jpg"
-              alt="Orbit Optical Clinic Building"
-              className="rounded-lg shadow-lg w-full object-cover h-115"
-            />
-          </div>
-          <div className="space-y-6">
-            <h2 className="font-heading font-semibold text-3xl lg:text-5xl text-balance text-primary">
-              Our Story
-            </h2>
-            <div className="space-y-4 text-muted-foreground">
-              <p>
-                Founded in 2024, Orbit Optical Clinic was established with a
-                simple yet powerful vision: to make quality eye care accessible
-                to everyone in Addis Ababa and surrounding communities.
-              </p>
-              <p>
-                Our founders, driven by their passion for vision health and
-                community service, recognized the need for a modern,
-                patient-centered eye care facility that combines international
-                standards with local understanding and cultural sensitivity.
-              </p>
-              <p>
-                Today, we proudly serve hundreds of patients, from routine eye
-                exams to complex vision corrections, always maintaining our
-                commitment to excellence, compassion, and innovation in eye
-                care.
-              </p>
-              <p>
-                Beyond clinical services, we also focus on community awareness
-                and preventive care, helping reduce avoidable vision problems
-                and ensuring brighter futures through better sight
-              </p>
-              <p>
-                Beyond clinical services, we also focus on community awareness
-                and preventive care, helping reduce avoidable vision problems
-                and ensuring brighter futures through better sight
-              </p>
+        {loading ? (
+          <p className="text-center text-muted-foreground">Loading...</p>
+        ) : story ? (
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Image */}
+            <div>
+              <img
+                src={story.image?.[0] || "/placeholder.svg"}
+                alt={story.title || "Our Story"}
+                className="rounded-lg shadow-lg w-full object-cover h-115"
+              />
+            </div>
+
+            {/* Text Content */}
+            <div className="space-y-6">
+              <h2 className="font-heading font-semibold text-3xl lg:text-5xl text-balance text-primary">
+                {story.title || "Our Story"}
+              </h2>
+              <div className="space-y-4 text-muted-foreground">
+                {story.description
+                  ? story.description
+                      .split("\n")
+                      .filter((line) => line.trim() !== "")
+                      .map((line, idx) => <p key={idx}>{line}</p>)
+                  : "No description available."}
+              </div>
             </div>
           </div>
-        </div>
+        ) : (
+          <p className="text-center text-muted-foreground">
+            No story data available.
+          </p>
+        )}
       </div>
     </section>
   );

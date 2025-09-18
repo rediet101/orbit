@@ -10,7 +10,7 @@ export function Footer() {
             <Link to="/" className="flex items-center gap-2">
               <Eye className="h-8 w-8 text-primary" />
               <span className="font-heading font-bold text-2xl text-primary">
-                Orbit
+                Orbit Optical
               </span>
             </Link>
             <p className="text-muted-foreground text-sm">
