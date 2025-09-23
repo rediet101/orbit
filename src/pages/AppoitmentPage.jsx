@@ -8,10 +8,31 @@ import SubmissionSuccess from "@/components/Appoitment/SubmissionSuccess";
 
 export default function AppointmentPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsSubmitted(true);
+  const handleSubmit = async (payload) => {
+    try {
+      setSubmitting(true);
+      const res = await fetch(
+        `${import.meta.env.VITE_EMR_API_BASE_URL}/appointments`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
+      if (!res.ok) {
+        const text = await res.text();
+        throw new Error(text || "Failed to submit appointment");
+      }
+      setIsSubmitted(true);
+    } catch (err) {
+      alert(err.message || "Submission failed");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   if (isSubmitted) {

@@ -18,13 +18,65 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { CheckCircle } from "lucide-react";
-
+import { Footer } from "@/components/Footer";
+import { Navigation } from "@/components/Navigation";
+const API_URL = import.meta.env.VITE_API_LINK + 'contact';
 function Form() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
+  });
 
-  const handleSubmit = (e) => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData({ ...formData, [id]: value });
+  };
+
+  const handleSelectChange = (value) => {
+    setFormData({ ...formData, subject: value });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setLoading(true);
+    setError("");
+
+    try {
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: `${formData.firstName} ${formData.lastName}`,
+          email: formData.email,
+          phonenumber: formData.phone,
+          subject: formData.subject,
+          message: formData.message,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        // Show backend error message if available
+        setError(data?.data?.message || "Something went wrong.");
+      } else {
+        setIsSubmitted(true);
+      }
+    } catch (err) {
+      setError("Failed to submit. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (isSubmitted) {
@@ -50,9 +102,10 @@ function Form() {
       </div>
     );
   }
+
   return (
     <div>
-      <Card className=" transition-all duration-300 border  border-violet-200 bg-gradient-to-br from-violet-100 to-violet-100">
+      <Card className="transition-all duration-300 border border-violet-200 bg-gradient-to-br from-violet-100 to-violet-100">
         <CardHeader>
           <CardTitle className="font-heading text-3xl mb-1">
             Send Us a Message
@@ -69,6 +122,8 @@ function Form() {
                 <Label htmlFor="firstName">First Name *</Label>
                 <Input
                   id="firstName"
+                  value={formData.firstName}
+                  onChange={handleChange}
                   required
                   placeholder="John"
                   className="border-1 border-muted-foreground focus:border-primary focus:ring-0"
@@ -78,6 +133,8 @@ function Form() {
                 <Label htmlFor="lastName">Last Name *</Label>
                 <Input
                   id="lastName"
+                  value={formData.lastName}
+                  onChange={handleChange}
                   required
                   placeholder="Doe"
                   className="border-1 border-muted-foreground focus:border-primary focus:ring-0"
@@ -90,36 +147,54 @@ function Form() {
                 <Input
                   id="email"
                   type="email"
+                  value={formData.email}
+                  onChange={handleChange}
                   placeholder="john.doe@example.com"
                   required
                   className="border-1 border-muted-foreground focus:border-primary focus:ring-0"
                 />
               </div>
-              <div className="space-y-2">
-                <Label htmlFor="phone">Phone Number</Label>
-                <Input
-                  id="phone"
-                  type="tel"
-                  placeholder="+251 911 123 456"
-                  className="border-1 border-muted-foreground focus:border-primary focus:ring-0"
-                />
-              </div>
+             <div className="space-y-2">
+  <Label htmlFor="phone">Phone Number</Label>
+  <Input
+    id="phone"
+    type="tel"
+    value={formData.phone}
+    onChange={(e) => {
+      // Remove non-digit characters
+      const digitsOnly = e.target.value.replace(/\D/g, "");
+      // Limit to 10 digits max
+      if (digitsOnly.length <= 10) {
+        setFormData({ ...formData, phone: digitsOnly });
+      }
+    }}
+    placeholder="Enter phone number (6-10 digits)"
+    className="border-1 border-muted-foreground focus:border-primary focus:ring-0"
+  />
+  {formData.phone && (formData.phone.length < 6 || formData.phone.length > 10) && (
+    <p className="text-red-500 text-sm">Phone number must be 6 to 10 digits.</p>
+  )}
+</div>
             </div>
-            <div className="space-y-2 ">
+            <div className="space-y-2">
               <Label htmlFor="subject">Subject *</Label>
-              <Select>
+              <Select onValueChange={handleSelectChange}>
                 <SelectTrigger className="border-1 border-muted-foreground focus:border-primary focus:ring-0">
                   <SelectValue placeholder="Select a subject" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="appointment">
+                  <SelectItem value="Appointment Inquiry">
                     Appointment Inquiry
                   </SelectItem>
-                  <SelectItem value="services">Services Information</SelectItem>
-                  <SelectItem value="insurance">Insurance Questions</SelectItem>
-                  <SelectItem value="billing">Billing Support</SelectItem>
-                  <SelectItem value="feedback">Feedback</SelectItem>
-                  <SelectItem value="other">Other</SelectItem>
+                  <SelectItem value="Services Information">
+                    Services Information
+                  </SelectItem>
+                  <SelectItem value="Insurance Questions">
+                    Insurance Questions
+                  </SelectItem>
+                  <SelectItem value="Billing Support">Billing Support</SelectItem>
+                  <SelectItem value="Feedback">Feedback</SelectItem>
+                  <SelectItem value="Other">Other</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -127,13 +202,18 @@ function Form() {
               <Label htmlFor="message">Message *</Label>
               <Textarea
                 id="message"
+                value={formData.message}
+                onChange={handleChange}
                 placeholder="Please describe how we can help you..."
                 className="min-h-[120px] border-1 border-muted-foreground focus:border-primary focus:ring-0"
                 required
               />
             </div>
-            <Button type="submit" size="lg" className="w-full">
-              Send Message
+
+            {error && <p className="text-red-500">{error}</p>}
+
+            <Button type="submit" size="lg" className="w-full" disabled={loading}>
+              {loading ? "Sending..." : "Send Message"}
             </Button>
           </form>
         </CardContent>
