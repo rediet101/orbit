@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 function SideBar() {
   return (
     <div className="space-y-6">
-      <Card className=" transition-all duration-300 border  border-violet-200 bg-gradient-to-br from-violet-100 to-violet-100">
+      <Card className=" transition-all duration-300 border  border-white-200 bg-gradient-to-br from-white-100 to-white">
         <CardHeader>
           <CardTitle className="font-heading">Contact Information</CardTitle>
         </CardHeader>
@@ -40,7 +40,7 @@ function SideBar() {
         </CardContent>
       </Card>
 
-      <Card className=" transition-all duration-300 border  border-violet-200 bg-gradient-to-br from-violet-100 to-violet-100">
+      <Card className=" transition-all duration-300 border  border-white-200 bg-gradient-to-br from-white-100 to-white">
         <CardHeader>
           <CardTitle className="font-heading">Office Hours</CardTitle>
         </CardHeader>
@@ -60,7 +60,7 @@ function SideBar() {
         </CardContent>
       </Card>
 
-      <Card className=" transition-all duration-300 border  border-green-200 bg-gradient-to-br from-green-100 to-green-50">
+      <Card className=" transition-all duration-300 border  border-white-200 bg-gradient-to-br from-white-100 to-white">
         <CardHeader>
           <CardTitle className="font-heading">What to Expect</CardTitle>
         </CardHeader>

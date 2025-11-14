@@ -10,6 +10,7 @@ import FAQPage from "./pages/FAQPage";
 import BlogPage from "./pages/BlogPage";
 import TestimonialsPage from "./pages/TestimonialPage";
 import BlogDetailPage from "./pages/BlogDetailPage";
+import Avalibel from "../src/pages/Avalibel.jsx";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/:id" element={<BlogDetailPage />} />
         <Route path="/testimonials" element={<TestimonialsPage />} />
+        <Route path="/Avalibel" element={<Avalibel />} />
       </Routes>
     </BrowserRouter>
   );
