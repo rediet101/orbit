@@ -52,6 +52,7 @@
 
 import React from "react";
 import { CheckCircle2 } from "lucide-react";
+import HomeImg from "../../assets/home2.jpg";
 
 function WhyChooseUs() {
   const reasons = [
@@ -69,7 +70,7 @@ function WhyChooseUs() {
           {/* Image Side */}
           <div className="relative group overflow-hidden rounded-2xl shadow-xl">
             <img
-              src="/src/assets/home2.jpg"
+              src={HomeImg}
               alt="Professional Eye Examination"
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
