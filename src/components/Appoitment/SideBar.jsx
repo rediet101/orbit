@@ -95,7 +95,7 @@ function SideBar() {
             For urgent eye emergencies, call us immediately or visit the nearest
             emergency room.
           </p>
-          <Button variant="secondary" size="sm" className="w-full">
+          <Button size="sm" className="w-full bg-white text-primary hover:bg-white/90">
             Call Emergency Line
           </Button>
         </CardContent>
