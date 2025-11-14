@@ -106,7 +106,7 @@ function BlogGrid({ tabs, selectedTab }) {
                             </div>
 
                             <h3 className="text-xl font-bold mb-3 font-montserrat text-primary">
-                              {post.slug}
+                              {post.title}
                             </h3>
                             <p className="mb-4 font-open-sans leading-relaxed text-muted-foreground line-clamp-3">
                               {post.body}
