@@ -165,7 +165,7 @@ function PaymentAndInsurance() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-foreground bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
+          <h2 className="text-4xl lg:text-5xl font-bold  bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
             Payment & Insurance Made Easy
           </h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
