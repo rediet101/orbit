@@ -32,11 +32,11 @@ export default function PortalPage() {
 
   if (!isLoggedIn) {
     return (
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-white">
         <Navigation />
-        <section className="py-20">
+        <section className="py-20 bg-white">
           <div className="max-w-md mx-auto px-4 sm:px-6 lg:px-8">
-            <Card className="transition-all duration-300 border  border-violet-200 bg-gradient-to-br from-violet-100 to-violet-50">
+            <Card className="transition-all duration-300 border  border-white-200 bg-gradient-to-br from-white-100 to-white">
               <CardHeader className="text-center">
                 <Eye className="h-12 w-12 text-primary mx-auto mb-4" />
                 <CardTitle className="font-heading">Patient Portal</CardTitle>
@@ -49,7 +49,7 @@ export default function PortalPage() {
                   <TabsList className="grid w-full grid-cols-2 bg-primary/20">
                     <TabsTrigger
                       value="signin"
-                      className="data-[state=active]:bg-primary/70 data-[state=active]:text-primary-foreground data-[state=active]:shadow font-semibold transition-colors"
+                      className="data-[state=active]:bg-[#1A73E8] data-[state=active]:text-primary-foreground data-[state=active]:shadow font-semibold transition-colors"
                     >
                       Sign In
                     </TabsTrigger>{" "}

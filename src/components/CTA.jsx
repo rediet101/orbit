@@ -6,24 +6,28 @@ function CTA() {
   return (
     <section
       id="appointment"
-      className="py-20 bg-primary text-primary-foreground"
+      className="py-20 bg-[#DFF3FF] text-primary-foreground"
     >
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8 text-black">
         <h2 className="font-heading font-bold text-3xl lg:text-4xl text-balance">
           Ready to Improve Your Vision?
         </h2>
-        <p className="text-lg text-primary-foreground/90 max-w-2xl mx-auto text-pretty">
+        <p className="text-lg  max-w-2xl mx-auto text-pretty text-black">
           Schedule your comprehensive eye examination today. Our experienced
           team is ready to help you see clearly.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg" variant="secondary" asChild>
+          <Button
+            asChild
+            size="lg"
+            className="text-white bg-primary hover:bg-[#DFF3FF] hover:text-primary transition-colors"
+          >
             <Link to="/appointment">Book Appointment</Link>
           </Button>
           <Button
             size="lg"
             variant="outline"
-            className="bg-transparent border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
+            className="text-primary hover:bg-primary"
           >
             Call +251 911 123 456
           </Button>

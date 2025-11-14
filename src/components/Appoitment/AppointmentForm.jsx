@@ -176,8 +176,8 @@ function AppointmentForm({ onSubmit }) {
   };
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <div className="lg:col-span-2">
-        <Card className=" transition-all duration-300 border  border-violet-200 bg-gradient-to-br from-violet-100 to-violet-100">
+      <div className="lg:col-span-2 bg-">
+        <Card className=" transition-all duration-300 border  border-white-200 bg-gradient-to-br from-white-100 to-white">
         <CardHeader>
           <CardTitle className="font-heading">
             Appointment Request Form
