@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer";
 import Hero from "@/components/Contact/Hero";
 import Form from "@/components/Contact/Form";
 import ContactInfo from "@/components/Contact/ContactInfo";
+import Map from "@/components/map/map";
 
 export default function ContactPage() {
   return (
@@ -15,6 +16,7 @@ export default function ContactPage() {
             <Form />
             <ContactInfo />
           </div>
+            <Map />
         </div>
       </section>
       <Footer />

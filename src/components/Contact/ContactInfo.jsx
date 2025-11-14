@@ -127,7 +127,6 @@
 
 // export default ContactInfo;
 
-
 ////////////////############################ new code ############################////////////////////
 
 import React from "react";
@@ -135,7 +134,7 @@ import { Phone, Mail, MapPin, Clock, Navigation } from "lucide-react";
 
 function ContactInfo() {
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 ">
       {/* Contact Card */}
       <div className="group relative overflow-hidden rounded-3xl bg-card/90 backdrop-blur-sm border border-border/50 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-60 group-hover:opacity-80 transition-opacity"></div>
@@ -160,8 +159,12 @@ function ContactInfo() {
               </div>
               <div>
                 <h4 className="font-semibold text-foreground">Phone</h4>
-                <p className="text-lg text-primary font-medium">+251 911 123 456</p>
-                <p className="text-sm text-muted-foreground">Available during office hours</p>
+                <p className="text-lg text-primary font-medium">
+                  +251 911 123 456
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  Available during office hours
+                </p>
               </div>
             </div>
 
@@ -172,8 +175,12 @@ function ContactInfo() {
               </div>
               <div>
                 <h4 className="font-semibold text-foreground">Email</h4>
-                <p className="text-lg text-primary font-medium">info@orbitoptical.com</p>
-                <p className="text-sm text-muted-foreground">We respond within 24 hours</p>
+                <p className="text-lg text-primary font-medium">
+                  info@orbitoptical.com
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  We respond within 24 hours
+                </p>
               </div>
             </div>
 
@@ -186,7 +193,9 @@ function ContactInfo() {
                 <h4 className="font-semibold text-foreground">Location</h4>
                 <p className="text-foreground">Nifas Silk Lafto Sub City</p>
                 <p className="text-foreground">Addis Ababa, Ethiopia</p>
-                <p className="text-sm text-muted-foreground">Near Megenagna Bus Station</p>
+                <p className="text-sm text-muted-foreground">
+                  Near Megenagna Bus Station
+                </p>
               </div>
             </div>
           </div>
@@ -208,12 +217,18 @@ function ContactInfo() {
 
           <div className="space-y-4">
             <div className="flex justify-between items-center py-2">
-              <span className="font-medium text-foreground">Monday - Friday</span>
-              <span className="text-primary font-semibold">8:00 AM - 6:00 PM</span>
+              <span className="font-medium text-foreground">
+                Monday - Friday
+              </span>
+              <span className="text-primary font-semibold">
+                8:00 AM - 6:00 PM
+              </span>
             </div>
             <div className="flex justify-between items-center py-2">
               <span className="font-medium text-foreground">Saturday</span>
-              <span className="text-primary font-semibold">9:00 AM - 4:00 PM</span>
+              <span className="text-primary font-semibold">
+                9:00 AM - 4:00 PM
+              </span>
             </div>
             <div className="flex justify-between items-center py-2">
               <span className="font-medium text-foreground">Sunday</span>
@@ -224,7 +239,9 @@ function ContactInfo() {
           <div className="mt-6 pt-6 border-t border-border/50 flex items-center gap-2">
             <Clock className="h-4 w-4 text-primary" />
             <p className="text-sm text-muted-foreground">
-              Emergency services available <span className="font-medium text-primary">24/7</span> by appointment
+              Emergency services available{" "}
+              <span className="font-medium text-primary">24/7</span> by
+              appointment
             </p>
           </div>
         </div>
@@ -233,25 +250,12 @@ function ContactInfo() {
       </div>
 
       {/* Full Width Map */}
-      <div className="group relative overflow-hidden rounded-3xl bg-card/90 backdrop-blur-sm border border-border/50 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+      {/* <div className="group relative overflow-hidden rounded-3xl bg-card/90 backdrop-blur-sm border border-border/50 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-50 group-hover:opacity-70 transition-opacity"></div>
         <div className="relative z-10 p-0">
-          <div className="relative h-96 w-full overflow-hidden rounded-3xl shadow-inner">
-            <iframe
-              src="https://maps.google.com/maps?q=Nifas+Silk+Lafto+Sub-city,+Addis+Ababa&t=&z=15&ie=UTF8&iwloc=&output=embed"
-              width="500%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Orbit Optical Location"
-              className="grayscale hover:grayscale-0 transition-all duration-500"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
-          </div>
         </div>
-      </div>
+      </div> */}
+          
     </div>
   );
 }
