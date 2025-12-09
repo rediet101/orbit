@@ -2,7 +2,7 @@ import React from "react";
 import { Badge } from "@/components/ui/badge";
 import back from "../../assets/Orbit.jpg";
 
-function Hero() {
+function MediaHero({ badge, title, description }) {
   return (
     <section
       className="relative bg-cover bg-center bg-no-repeat py-24 lg:py-32 overflow-hidden"
@@ -10,11 +10,11 @@ function Hero() {
         backgroundImage: `url(${back})`,
       }}
     >
-      {/* Dark Overlay with brand color */}
-      <div className="absolute inset-0" style={{ backgroundColor: 'rgba(2, 44, 67, 0.75)' }} />
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/50" />
 
-      {/* Subtle Gradient Overlay with teal */}
-      <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom right, rgba(25, 167, 168, 0.3), transparent, rgba(2, 44, 67, 0.2))' }} />
+      {/* Optional: Subtle Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-secondary/20" />
 
       {/* Content */}
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
@@ -24,27 +24,26 @@ function Hero() {
             variant="secondary"
             className="backdrop-blur-md bg-white/20 border border-white/30 text-white px-5 py-1.5 text-sm font-semibold shadow-lg"
           >
-            Contact Us
+            {badge}
           </Badge>
         </div>
 
         {/* Title */}
         <h1 className="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-tight text-white drop-shadow-lg animate-slide-up">
-          Contact Orbit Optical
+          {title}
         </h1>
 
         {/* Description */}
         <p className="text-lg lg:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed drop-shadow animate-fade-in-delay">
-          Have questions about our services or need to schedule an appointment?
-          We're here to help you with all your eye care needs.
+          {description}
         </p>
       </div>
 
-      {/* Decorative Elements with brand colors */}
-      <div className="absolute top-10 left-10 w-72 h-72 rounded-full blur-3xl animate-pulse -z-10" style={{ backgroundColor: 'rgba(212, 246, 240, 0.4)' }}></div>
-      <div className="absolute bottom-10 right-10 w-80 h-80 rounded-full blur-3xl animate-pulse delay-1000 -z-10" style={{ backgroundColor: 'rgba(25, 167, 168, 0.3)' }}></div>
+      {/* Optional Decorative Elements */}
+      <div className="absolute top-10 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse -z-10"></div>
+      <div className="absolute bottom-10 right-10 w-80 h-80 bg-secondary/10 rounded-full blur-3xl animate-pulse delay-1000 -z-10"></div>
     </section>
   );
 }
 
-export default Hero;
+export default MediaHero;

@@ -43,12 +43,12 @@
 
 :root {
   --background: #f3f4f6; /* Soft Gray */
-  --foreground: #1A73E8; /* Dark text */
+  --foreground: #1a73e8; /* Dark text */
   --card: #ffffff; /* White for cards */
-  --card-foreground: #1A73E8; /* Royal Blue */
+  --card-foreground: #1a73e8; /* Royal Blue */
   --popover: #ffffff; /* White for popovers */
-  --popover-foreground: #1A73E8; /* Royal Blue for popover text */
-  --primary: #1A73E8; /* Royal Blue */
+  --popover-foreground: #1a73e8; /* Royal Blue for popover text */
+  --primary: #1a73e8; /* Royal Blue */
   --primary-foreground: #ffffff; /* White text on primary */
   --secondary: #10b981; /* Emerald Green */
   --secondary-foreground: #ffffff; /* White text on secondary */
@@ -81,20 +81,20 @@
 }
 
 .dark {
-  --background: #1A73E8;
+  --background: #1a73e8;
   --foreground: #f8fafc;
-  --card: #1A73E8;
+  --card: #1a73e8;
   --card-foreground: #f8fafc;
-  --popover: #1A73E8;
+  --popover: #1a73e8;
   --popover-foreground: #f8fafc;
   --primary: #10b981; /* Emerald Green in dark mode */
-  --primary-foreground: #1A73E8;
-  --secondary: #1A73E8; /* Royal Blue as secondary in dark */
+  --primary-foreground: #1a73e8;
+  --secondary: #1a73e8; /* Royal Blue as secondary in dark */
   --secondary-foreground: #f8fafc;
   --muted: #334155;
   --muted-foreground: #94a3b8;
   --accent: #10b981; /* Emerald Green accents */
-  --accent-foreground: #1A73E8;
+  --accent-foreground: #1a73e8;
   --destructive: #dc2626;
   --destructive-foreground: #f8fafc;
   --border: #334155;

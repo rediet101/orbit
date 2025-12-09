@@ -319,7 +319,7 @@ function ContactForm() {
     return (
       <div className="min-h-screen bg-gradient-to-b from-background to-muted/30 flex flex-col">
         <Navigation />
-        <div className="flex-1 py-20 lg:py-32">
+        <div className=" flex-1 py-20 lg:py-32">
           <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
             <div className="relative inline-block">
               <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full animate-pulse"></div>
@@ -349,24 +349,23 @@ function ContactForm() {
 
   // Form State
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-muted/30 py-12 lg:py-20">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Form Card */}
-        <Card className="group relative overflow-hidden rounded-3xl bg-card/95 backdrop-blur-sm border border-border/50 shadow-2xl hover:shadow-3xl transition-all duration-500">
+    <div className="space-y-8">
+      {/* Form Card */}
+      <Card className="group relative overflow-hidden rounded-3xl backdrop-blur-sm shadow-2xl shadow-blue-100 hover:shadow-3xl transition-all duration-500 bg-white/90 border border-blue-100">
           {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-60 group-hover:opacity-80 transition-opacity"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
 
           <CardHeader className="relative z-10 pb-8">
             <div className="flex items-center gap-3 mb-3">
-              <div className="p-3 bg-primary/10 backdrop-blur-sm rounded-2xl border border-primary/20">
-                <Send className="h-6 w-6 text-primary" />
+              <div className="p-3 backdrop-blur-sm rounded-2xl bg-blue-100 border border-blue-200">
+                <Send className="h-6 w-6 text-blue-600" />
               </div>
-              <CardTitle className="text-3xl lg:text-4xl font-bold text-foreground">
+              <CardTitle className="text-3xl lg:text-4xl font-bold text-blue-900">
                 Get in Touch
               </CardTitle>
             </div>
-            <CardDescription className="text-base">
-              Fill out the form below and we’ll respond within <strong>24 hours</strong>.
+            <CardDescription className="text-base text-blue-700/70">
+              Fill out the form below and we'll respond within <strong>24 hours</strong>.
             </CardDescription>
           </CardHeader>
 
@@ -476,7 +475,7 @@ function ContactForm() {
               <Button
                 type="submit"
                 size="lg"
-                className="w-full h-14 text-lg font-semibold group relative overflow-hidden"
+                className="w-full h-14 text-lg font-semibold group relative overflow-hidden text-white bg-blue-600 hover:bg-blue-700"
                 disabled={loading}
               >
                 <span className="relative z-10 flex items-center justify-center gap-2">
@@ -492,25 +491,24 @@ function ContactForm() {
                     </>
                   )}
                 </span>
-                <div className="absolute inset-0 bg-primary/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                <div className="absolute inset-0 bg-blue-700 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
               </Button>
             </form>
           </CardContent>
 
           {/* Hover Glow Border */}
-          <div className="absolute inset-0 rounded-3xl border-2 border-transparent group-hover:border-primary/30 transition-colors pointer-events-none"></div>
+          <div className="absolute inset-0 rounded-3xl border-2 border-transparent group-hover:border-blue-200 transition-colors pointer-events-none"></div>
         </Card>
-      </div>
 
-      {/* Custom Animation */}
-      <style jsx>{`
-        @keyframes fade-in {
-          from { opacity: 0; transform: translateY(5px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in { animation: fade-in 0.4s ease-out; }
-      `}</style>
-    </div>
+        {/* Custom Animation */}
+        <style jsx>{`
+          @keyframes fade-in {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+          .animate-fade-in { animation: fade-in 0.4s ease-out; }
+        `}</style>
+      </div>
   );
 }
 

@@ -11,6 +11,14 @@ import BlogPage from "./pages/BlogPage";
 import TestimonialsPage from "./pages/TestimonialPage";
 import BlogDetailPage from "./pages/BlogDetailPage";
 import Avalibel from "../src/pages/Avalibel.jsx";
+import ScreenPage from "./pages/ScreenPage";
+
+// Media Pages
+import EducationPage from "./pages/media/EducationPage";
+import SocialPage from "./pages/media/SocialPage";
+import ArticlePage from "./pages/media/ArticlePage";
+import ArticleDetailPage from "./pages/media/ArticleDetailPage";
+import PublicationPage from "./pages/media/PublicationPage";
 
 function App() {
   return (
@@ -27,9 +35,18 @@ function App() {
         <Route path="/blog/:id" element={<BlogDetailPage />} />
         <Route path="/testimonials" element={<TestimonialsPage />} />
         <Route path="/Avalibel" element={<Avalibel />} />
+        <Route path="/screen" element={<ScreenPage />} />
+        
+        {/* Media Routes */}
+        <Route path="/media/education" element={<EducationPage />} />
+        <Route path="/media/social" element={<SocialPage />} />
+        <Route path="/media/article" element={<ArticlePage />} />
+        <Route path="/media/article/:id" element={<ArticleDetailPage />} />
+        <Route path="/media/publication" element={<PublicationPage />} />
       </Routes>
     </BrowserRouter>
   );
 }
 
 export default App;
+

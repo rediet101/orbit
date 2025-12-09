@@ -176,7 +176,7 @@ export function Footer() {
 
         {/* Bottom Line */}
         <div className="mt-12 pt-8 border-t border-white/20 text-center">
-          <p className="text-xs text-white/70">
+          <p className="text-xs text-white/90">
             © {new Date().getFullYear()} Orbit Optical Clinic. All rights
             reserved.
           </p>

@@ -5,7 +5,7 @@ import CTA from "@/components/CTA";
 import Hero from "@/components/About/Hero";
 import OurStory from "@/components/About/OurStory";
 import Mission from "@/components/About/Mission";
-import WhyChooseUs from "@/components/About/WhyChooseUs";
+// import WhyChooseUs from "@/components/About/WhyChooseUs";
 
 export default function AboutPage() {
   return (
@@ -15,7 +15,7 @@ export default function AboutPage() {
       <OurStory />
       <Mission />
       <LeadershipSection />
-      <WhyChooseUs />
+      {/* <WhyChooseUs /> */}
       <CTA />
       <Footer />
     </div>
