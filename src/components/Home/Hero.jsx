@@ -154,7 +154,7 @@ export default function Hero() {
       `}</style>
 
       <section
-        className="relative min-h-[500px] lg:min-h-[600px] bg-cover bg-center bg-no-repeat flex items-center overflow-visible animate-bg-move"
+        className="relative min-h-[650px] lg:min-h-[750px] bg-cover bg-center bg-no-repeat flex items-center overflow-visible animate-bg-move"
         style={{
           backgroundImage: bgImage
             ? `url(${bgImage})`
@@ -170,7 +170,7 @@ export default function Hero() {
             {/* Left Content */}
             <div className="space-y-6 text-white">
               <div className="space-y-4">
-                <h1 className="font-heading font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight uppercase animate-slide-in-left text-blue-600">
+                <h1 className="font-heading font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight uppercase animate-slide-in-left text-blue-600 -mt-10">
                   {heroData.title}
                 </h1>
 
@@ -209,8 +209,8 @@ export default function Hero() {
 
         {/* Floating Stats Card - Positioned at the bottom, overlaying the next section */}
         <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 z-20 w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-<div className="bg-white rounded-2xl p-6 lg:p-10 shadow-2xl max-w-3xl mx-auto animate-fade-in-up delay-600 hover:shadow-3xl transition-all duration-300">
-  <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 items-center justify-center">
+<div className="bg-white rounded-2xl p-6 lg:p-10 shadow-2xl max-w-5xl mx-auto animate-fade-in-up delay-600 hover:shadow-3xl transition-all duration-300">
+  <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-16 items-center justify-center">
     <div className="text-center">
       <StatCard value={5000} label="Happy Patients" suffix="+" />
     </div>

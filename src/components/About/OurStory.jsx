@@ -1,26 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Eye, Sparkles, Quote } from "lucide-react";
+import { EmptyState } from "@/components/ui/EmptyState";
 
-function OurStory() {
-  const [story, setStory] = useState(null);
-  const [loading, setLoading] = useState(true);
+function OurStory({ data }) {
   const [hoveredParagraph, setHoveredParagraph] = useState(null);
   const [imageLoaded, setImageLoaded] = useState(false);
 
-  useEffect(() => {
-    const fetchStory = async () => {
-      try {
-        const res = await fetch(import.meta.env.VITE_API_LINK + "about");
-        const data = await res.json();
-        setStory(data.data?.[0] || null);
-      } catch (error) {
-        console.error("Error fetching Our Story:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchStory();
-  }, []);
+  // Use data from props (passed from page-level fetch)
+  const story = data || null;
 
   // Parse description into paragraphs
   const paragraphs = story?.description
@@ -30,38 +17,11 @@ function OurStory() {
         .filter(Boolean)
     : [];
 
-  if (loading) {
-    return (
-      <section className="py-20 lg:py-28 bg-gradient-to-br from-[#DFF3FF] via-blue-50 to-[#E6F7FF]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="relative">
-              <div className="h-96 bg-gradient-to-r from-blue-100/50 to-cyan-100/50 rounded-3xl animate-pulse"></div>
-            </div>
-            <div className="space-y-6">
-              <div className="h-12 bg-gradient-to-r from-blue-200 to-cyan-200 rounded-full w-80 animate-pulse"></div>
-              <div className="space-y-4">
-                {[1, 2, 3, 4].map((i) => (
-                  <div key={i} className="h-4 bg-gradient-to-r from-blue-100 to-cyan-100 rounded-full animate-pulse"></div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
+  // If no data provided, show empty state with sparkle icon
   if (!story) {
     return (
-      <section className="py-20 text-center text-muted-foreground">
-        <div className="relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5 blur-3xl"></div>
-          <div className="relative">
-            <Sparkles className="h-16 w-16 mx-auto text-primary/30 mb-4" />
-            <p className="text-lg">No story available yet. Our journey begins soon!</p>
-          </div>
-        </div>
+      <section className="py-20 bg-gradient-to-br from-[#DFF3FF] via-blue-50 to-[#E6F7FF]">
+        <EmptyState message="No story available yet. Our journey begins soon!" />
       </section>
     );
   }

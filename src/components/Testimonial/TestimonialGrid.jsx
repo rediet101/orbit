@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { LoadingState } from "@/components/ui/LoadingState";
+import { EmptyState } from "@/components/ui/EmptyState";
 
 function TestimonialGrid() {
   const [testimonials, setTestimonials] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchTestimonials = async () => {
@@ -12,6 +15,7 @@ function TestimonialGrid() {
         setTestimonials(data.Testimonials || []);
       } catch (error) {
         console.error("Error fetching testimonials:", error);
+        setError(error);
       } finally {
         setLoading(false);
       }
@@ -32,17 +36,25 @@ function TestimonialGrid() {
 
   if (loading) {
     return (
-      <div className="text-center py-20 bg-[#DFF3FF]">
-        <p className="text-lg text-gray-500">Loading testimonials...</p>
-      </div>
+      <section className="bg-[#DFF3FF]">
+        <LoadingState message="Loading testimonials..." />
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="bg-[#DFF3FF]">
+        <EmptyState message="Unable to load testimonials. Please try again later." />
+      </section>
     );
   }
 
   if (!testimonials.length) {
     return (
-      <div className="text-center py-20 bg-[#DFF3FF]">
-        <p className="text-lg text-gray-500">No testimonials found.</p>
-      </div>
+      <section className="bg-[#DFF3FF]">
+        <EmptyState message="No testimonials yet. Our happy clients' stories are coming soon!" />
+      </section>
     );
   }
 

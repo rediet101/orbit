@@ -107,10 +107,10 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, CalendarPlus, ClipboardList } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import logo from "../assets/Logo/Logo1-01.svg";
 
 export function Navigation() {
@@ -118,6 +118,20 @@ export function Navigation() {
   const pathname = location.pathname;
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMediaDropdownOpen, setIsMediaDropdownOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navItems = [
     { href: "/", label: "Home" },
@@ -145,31 +159,42 @@ export function Navigation() {
   };
 
   return (
-    <nav className="absolute top-0 left-0 right-0 z-50 bg-blue-200 backdrop-blur-lg sticky">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+    <nav 
+      className={cn(
+        "fixed z-50 transition-all duration-1000 ease-in-out",
+        isScrolled 
+          ? "top-0 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl rounded-b-3xl bg-blue-50/95 backdrop-blur-md shadow-2xl border-x border-b border-blue-100 py-1" 
+          : "top-0 left-0 right-0 bg-black/10 backdrop-blur-[2px] py-1"
+      )}
+    >
+      <div className="max-w-7xl mx-auto px-6 sm:px-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 items-center h-17">
 
-          {/* LOGO */}
-          <Link to="/" className="flex items-left ml-10 gap-2 md:gap-8">
-            <img
-              src={logo}
-              alt="Orbit Optical"
-              className="h-18 w-auto"
-            />
-          </Link>
+          {/* LEFT: LOGO */}
+          <div className="flex justify-start">
+            <Link to="/" className="flex items-center">
+              <img
+                src={logo}
+                alt="Orbit Optical"
+                className="h-20 w-auto"
+              />
+            </Link>
+          </div>
 
-          {/* DESKTOP NAV */}
-          <div className="hidden md:flex items-center gap-8 mr-5">
+          {/* CENTER: DESKTOP NAV */}
+          <div className="hidden md:flex justify-center items-center gap-6 lg:gap-10">
             {navItems.map((item, index) => (
               <div key={index} className="relative">
                 {item.isDropdown ? (
-                  // Media Dropdown - Click to open
                   <div className="relative">
                     <button
                       onClick={() => setIsMediaDropdownOpen(!isMediaDropdownOpen)}
                       className={cn(
-                        "flex items-center gap-1 text-white hover:text-blue-300 transition-colors duration-200 relative",
-                        pathname.startsWith("/media") && "text-blue-300 font-semibold"
+                        "flex items-center gap-1 transition-colors duration-200 relative h-17 whitespace-nowrap",
+                        isScrolled 
+                          ? "text-sm lg:text-lg text-gray-700 hover:text-blue-600" 
+                          : "text-md lg:text-lg text-white hover:text-blue-400",
+                        pathname.startsWith("/media") && (isScrolled ? "text-blue-600 font-semibold" : "text-blue-400 font-semibold")
                       )}
                     >
                       {item.label}
@@ -180,16 +205,15 @@ export function Navigation() {
                         )} 
                       />
                       {pathname.startsWith("/media") && (
-                        <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-500"></span>
+                        <span className="absolute bottom-2 left-0 right-0 h-1 bg-blue-500 rounded-full"></span>
                       )}
                     </button>
                     
-                    {/* Dropdown Menu */}
                     {isMediaDropdownOpen && (
-                      <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-50">
+                      <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-50">
                         {item.subItems.map((subItem) => (
                           <Link
-                            key={subItem.href}
+                            key={subItem.href} 
                             to={subItem.href}
                             onClick={handleLinkClick}
                             className={cn(
@@ -204,50 +228,68 @@ export function Navigation() {
                     )}
                   </div>
                 ) : (
-                  // Regular Link
                   <Link
                     to={item.href}
                     className={cn(
-                      "text-white hover:text-blue-300 transition-colors duration-200 relative pb-2",
-                      pathname === item.href && "text-blue-300 font-semibold"
+                      "flex items-center transition-colors duration-200 relative h-16 whitespace-nowrap",
+                      isScrolled 
+                        ? "text-sm lg:text-lg text-gray-700 hover:text-blue-600" 
+                        : "text-base lg:text-lg text-white hover:text-blue-400",
+                      pathname === item.href && (isScrolled ? "text-blue-600 font-semibold" : "text-blue-400 font-semibold")
                     )}
                   >
                     {item.label}
                     {pathname === item.href && (
-                      <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-500"></span>
+                      <span className="absolute bottom-2 left-0 right-0 h-1 bg-blue-500 rounded-full"></span>
                     )}
                   </Link>
                 )}
               </div>
             ))}
-            <Button
-              className="bg-blue-600 text-white shadow-md hover:bg-blue-700 transition rounded-full px-6"
-              asChild
-            >
-              <Link to="/appointment">Book Appointment</Link>
-            </Button>
-            <Button
-              className="border-1 border-blue-600 bg-white text-blue-600 hover:bg-white hover:text-blue-600 shadow-md transition rounded-full px-6"
-              asChild
-            >
-              <Link to="/screen">Screen Yourself</Link>
-            </Button>
           </div>
 
-          {/* MOBILE MENU BUTTON */}
-          <div className="md:hidden">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-white hover:text-white hover:bg-blue-600 rounded-full transition"
-            >
-              {isMobileMenuOpen ? (
-                <X className="h-7 w-7" />
-              ) : (
-                <Menu className="h-7 w-7" />
-              )}
-            </Button>
+          {/* RIGHT: ACTION ICONS & MOBILE BUTTON */}
+          <div className="flex justify-end items-center gap-4">
+            <div className="hidden md:flex items-center gap-4">
+              <Link 
+                to="/appointment" 
+                className={cn(
+                  "p-2 rounded-full transition-all duration-300",
+                  isScrolled ? "text-blue-600 hover:bg-blue-100" : "text-blue-400 hover:bg-white/10"
+                )}
+                title="Book Appointment"
+              >
+                <CalendarPlus className="h-6 w-6" />
+              </Link>
+              <Link 
+                to="/screen" 
+                className={cn(
+                  "p-2 rounded-full transition-all duration-300",
+                  isScrolled ? "text-blue-600 hover:bg-blue-100" : "text-blue-400 hover:bg-white/10"
+                )}
+                title="Screen Yourself"
+              >
+                <ClipboardList className="h-6 w-6" />
+              </Link>
+            </div>
+            
+            <div className="md:hidden">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className={cn(
+                  "p-2 rounded-full transition-all duration-300",
+                  isScrolled ? "text-blue-600 hover:bg-blue-100" : "text-white hover:bg-blue-400"
+                )}
+              >
+                {isMobileMenuOpen ? (
+                  <X className="h-7 w-7" />
+                ) : (
+                  <Menu className="h-7 w-7" />
+                )}
+              </Button>
+            </div>
           </div>
         </div>
 
@@ -265,8 +307,8 @@ export function Navigation() {
                         className={cn(
                           "w-full flex items-center justify-between px-3 py-2 text-base font-medium rounded-md transition-colors",
                           pathname.startsWith("/media")
-                            ? "text-blue-300 bg-blue-600/30"
-                            : "text-white hover:text-blue-300 hover:bg-white/10"
+                            ? "text-blue-400 bg-blue-600/10"
+                            : "text-white hover:text-blue-400 hover:bg-white/10"
                         )}
                       >
                         {item.label}
@@ -289,8 +331,8 @@ export function Navigation() {
                               className={cn(
                                 "block px-3 py-2 text-sm rounded-md transition-colors",
                                 pathname === subItem.href
-                                  ? "text-blue-300 bg-blue-600/30 font-semibold"
-                                  : "text-gray-300 hover:text-blue-300 hover:bg-white/10"
+                                  ? "text-blue-400 bg-blue-600/10 font-semibold"
+                                  : "text-gray-300 hover:text-blue-400 hover:bg-white/10"
                               )}
                             >
                               {subItem.label}
@@ -307,8 +349,8 @@ export function Navigation() {
                       className={cn(
                         "block px-3 py-2 text-base font-medium rounded-md transition-colors",
                         pathname === item.href
-                          ? "text-blue-300 bg-blue-600/30"
-                          : "text-white hover:text-blue-300 hover:bg-white/10"
+                          ? "text-blue-400 bg-blue-600/10"
+                          : "text-white hover:text-blue-400 hover:bg-white/10"
                       )}
                     >
                       {item.label}
@@ -319,19 +361,19 @@ export function Navigation() {
 
               <div className="px-3 pt-2 space-y-2">
                 <Button
-                  className="w-full rounded-full bg-amber-500 hover:bg-amber-600"
-                  asChild
-                >
-                  <Link to="/screen" onClick={handleLinkClick}>
-                    Screen Yourself
-                  </Link>
-                </Button>
-                <Button
-                  className="w-full rounded-full bg-blue-600 hover:bg-blue-700"
+                  className="w-full rounded-md bg-blue-600 hover:bg-blue-700 font-semibold"
                   asChild
                 >
                   <Link to="/appointment" onClick={handleLinkClick}>
                     Book Appointment
+                  </Link>
+                </Button>
+                <Button
+                  className="w-full rounded-md border border-white/20 bg-white/10 text-white hover:bg-white/20 font-semibold backdrop-blur-sm"
+                  asChild
+                >
+                  <Link to="/screen" onClick={handleLinkClick}>
+                    Screen Yourself
                   </Link>
                 </Button>
               </div>

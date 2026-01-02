@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import parse from "html-react-parser";
+import logo from "../../assets/Logo/Logo1-01.svg";
 
 // Service icons as SVG components with blue color
 const PrescriptionGlassesIcon = () => (
@@ -258,211 +259,121 @@ function ServicePreview() {
         </div>
       </div>
 
-      {/* Our Service Section */}
-      <div className=" py-16 lg:py-10">
+      {/* Our Unique Offerings Section */}
+      <div className=" py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Header */}
-          <div className="text-center mb-12">
-            <span className="text-blue-500 font-medium text-sm uppercase tracking-wide">
-              Our Service
-            </span>
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-800 mt-2 mb-4">
-              What Can We Do
-            </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              We provide comprehensive eye care services using the latest
-              technology and techniques to ensure the best possible outcomes for
-              your vision health.
-            </p>
-          </div>
-
-          {/* Service Cards - Dynamic from API */}
-          {/* 3D Flip Card Styles */}
-          <style>{`
-            .flip-card {
-              perspective: 1000px;
-              height: 380px;
-            }
-            .flip-card-inner {
-              position: relative;
-              width: 100%;
-              height: 100%;
-              transition: transform 0.6s;
-              transform-style: preserve-3d;
-            }
-            .flip-card:hover .flip-card-inner {
-              transform: rotateY(180deg);
-            }
-            .flip-card-front,
-            .flip-card-back {
-              position: absolute;
-              width: 100%;
-              height: 100%;
-              -webkit-backface-visibility: hidden;
-              backface-visibility: hidden;
-              border-radius: 1rem;
-              overflow: hidden;
-            }
-            .flip-card-back {
-              transform: rotateY(180deg);
-            }
-          `}</style>
-
-          {loading ? (
-            <div className="grid md:grid-cols-3 gap-8">
-              {[1, 2, 3].map((n) => (
-                <div key={n} className="animate-pulse">
-                  <div className="bg-gray-200 rounded-lg h-56 mb-6"></div>
-                  <div className="h-6 bg-gray-200 rounded w-3/4 mb-3"></div>
-                  <div className="h-4 bg-gray-200 rounded w-full mb-2"></div>
-                  <div className="h-4 bg-gray-200 rounded w-5/6"></div>
-                </div>
-              ))}
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-0 items-start">
+            {/* Left Side - Title and Description */}
+            <div className="lg:col-span-4 lg:pr-8 relative flex flex-col items-center text-center">
+              <div className="mb-6">
+                <img src={logo} alt="Orbit Logo" className="h-24 w-auto mb-6 mx-auto" />
+                <h2 className="text-4xl lg:text-6xl font-montserrat font-bold mb-6">
+                  <span className="text-blue-500">Our </span>
+                  <span className="text-[#10b981] italic">Services</span>
+                </h2>
+                
+                <p className="text-gray-600 leading-relaxed text-sm font-open-sans">
+                  At Orbit Eye, we provide comprehensive eye care that covers a wide range 
+                  of specialties and services to meet the diverse needs of our patients.
+                </p>
+              </div>
+              
+              {/* Decorative dot and line - positioned at right edge to connect to divider */}
+              <div className="hidden lg:flex items-center absolute top-1/2 right-0 transform translate-x-full -translate-y-1/2">
+                {/* <div className="w-10 h-0.5 bg-gray-300"></div> */}
+                <div className="w-4 h-4 bg-blue-500 rounded-full -ml-2"></div>
+                <div className="w-10.5 h-0.5 bg-blue-300"></div>
+              </div>
             </div>
-          ) : apiServices.length > 0 ? (
-            <div className="grid md:grid-cols-3 gap-8">
-              {apiServices.map((service, index) => (
-                <div 
-                  key={service.id || index} 
-                  className="flip-card"
-                >
-                  <div className="flip-card-inner shadow-lg hover:shadow-xl">
-                    {/* Front Side */}
-                    <div className="flip-card-front relative">
-                      <img
-                        src={service.image_url?.[0] || placeholderImage}
-                        alt={service.title}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-                        <h3 className="text-xl font-bold text-white text-center">
-                          {service.title}
-                        </h3>
-                      </div>
+
+            {/* Vertical Divider Line */}
+            <div className="hidden lg:flex lg:col-span-1 justify-center">
+              <div className="w-px h-full min-h-[600px] bg-blue-300"></div>
+            </div>
+
+            {/* Right Side - 2x2 Service Grid */}
+            <div className="lg:col-span-7 lg:pl-8">
+              {loading ? (
+                <div className="grid grid-cols-2 gap-6">
+                  {[1, 2, 3, 4].map((n) => (
+                    <div key={n} className="animate-pulse">
+                      <div className="bg-gray-600 rounded-lg h-40 mb-4"></div>
+                      <div className="h-5 bg-gray-600 rounded w-3/4 mb-2"></div>
+                      <div className="h-3 bg-gray-600 rounded w-full mb-1"></div>
+                      <div className="h-3 bg-gray-600 rounded w-5/6"></div>
                     </div>
-                    {/* Back Side */}
-                    <div className="flip-card-back bg-gradient-to-br from-blue-600 to-blue-800 flex flex-col justify-center items-center p-8 text-center">
-                      <h3 className="text-2xl font-bold text-white mb-4">
+                  ))}
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10">
+                  {(apiServices.length > 0 ? apiServices.slice(0, 4) : [
+                    {
+                      id: 1,
+                      title: "Visual Acuity Test",
+                      description: "Comprehensive visual acuity testing to measure the sharpness and clarity of your vision using state-of-the-art equipment.",
+                      image_url: ["https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400&h=280&fit=crop"]
+                    },
+                    {
+                      id: 2,
+                      title: "Eye Check Up",
+                      description: "Complete eye health examination including assessment of eye pressure and retina health for early detection.",
+                      image_url: ["https://images.unsplash.com/photo-1551884170-09fb70a3a2ed?w=400&h=280&fit=crop"]
+                    },
+                    {
+                      id: 3,
+                      title: "Contact Lens Fitting",
+                      description: "Professional contact lens fitting and supplies with comfortable and precise measurements for optimal vision.",
+                      image_url: ["https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=400&h=280&fit=crop"]
+                    },
+                    {
+                      id: 4,
+                      title: "Prescription Glasses",
+                      description: "High-quality prescription glasses tailored to your vision needs with a wide selection of stylish frames.",
+                      image_url: ["https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=400&h=280&fit=crop"]
+                    }
+                  ]).map((service, index) => (
+                    <div key={service.id || index} className="group">
+                      {/* Image with New Badge */}
+                      <div className="relative mb-4 overflow-hidden rounded-lg">
+                        <img
+                          src={service.image_url?.[0] || placeholderImage}
+                          alt={service.title}
+                          className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-105"
+                        />
+                        {/* New Badge */}
+                        <div className="absolute bottom-0 right-0">
+                          <div className="bg-[#10b981] text-white text-xs font-bold px-4 py-1.5">
+                            New
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {/* Title */}
+                      <h3 className="text-xl font-montserrat font-bold text-blue-500 mb-2">
                         {service.title}
                       </h3>
-                      <p className="text-blue-100 leading-relaxed mb-6">
-                        {stripHtml(service.description)}
+                      
+                      {/* Description */}
+                      <p className="text-gray-400 text-sm leading-relaxed mb-3 line-clamp-3 font-open-sans">
+                        {typeof service.description === 'string' 
+                          ? stripHtml(service.description) 
+                          : service.description}
                       </p>
+                      
+                      {/* Read More Link */}
                       <Link
                         to="/services"
-                        className="bg-white text-blue-600 font-semibold px-6 py-3 rounded-full hover:bg-blue-50 transition-colors inline-flex items-center gap-2"
+                        className="text-[#1a73e8] text-sm font-semibold uppercase tracking-wide hover:text-[#10b981] transition-colors inline-flex items-center gap-1"
                       >
                         Read More
-                        <span className="text-lg">→</span>
+                        <span>›</span>
                       </Link>
                     </div>
-                  </div>
+                  ))}
                 </div>
-              ))}
+              )}
             </div>
-          ) : (
-            // Fallback static content if API fails
-            <div className="grid md:grid-cols-3 gap-8">
-              {/* Card 1 */}
-              <div className="flip-card">
-                <div className="flip-card-inner shadow-lg hover:shadow-xl">
-                  <div className="flip-card-front relative">
-                    <img
-                      src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400&h=280&fit=crop"
-                      alt="Visual Acuity Test"
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-                      <h3 className="text-xl font-bold text-white text-center">
-                        Visual Acuity Test
-                      </h3>
-                    </div>
-                  </div>
-                  <div className="flip-card-back bg-gradient-to-br from-blue-600 to-blue-800 flex flex-col justify-center items-center p-8 text-center">
-                    <h3 className="text-2xl font-bold text-white mb-4">
-                      Visual Acuity Test
-                    </h3>
-                    <p className="text-blue-100 leading-relaxed mb-6">
-                      Comprehensive visual acuity testing to measure the sharpness and clarity of your vision. We use state-of-the-art equipment to ensure accurate results.
-                    </p>
-                    <Link
-                      to="/services"
-                      className="bg-white text-blue-600 font-semibold px-6 py-3 rounded-full hover:bg-blue-50 transition-colors inline-flex items-center gap-2"
-                    >
-                      Read More
-                      <span className="text-lg">→</span>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-
-              {/* Card 2 */}
-              <div className="flip-card">
-                <div className="flip-card-inner shadow-lg hover:shadow-xl">
-                  <div className="flip-card-front relative">
-                    <img
-                      src="https://images.unsplash.com/photo-1551884170-09fb70a3a2ed?w=400&h=280&fit=crop"
-                      alt="Eye Check Up"
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-                      <h3 className="text-xl font-bold text-white text-center">
-                        Eye Check Up
-                      </h3>
-                    </div>
-                  </div>
-                  <div className="flip-card-back bg-gradient-to-br from-blue-600 to-blue-800 flex flex-col justify-center items-center p-8 text-center">
-                    <h3 className="text-2xl font-bold text-white mb-4">
-                      Eye Check Up
-                    </h3>
-                    <p className="text-blue-100 leading-relaxed mb-6">
-                      Complete eye health examination including assessment of eye pressure and retina health. Early detection is key to preventing vision problems.
-                    </p>
-                    <Link
-                      to="/services"
-                      className="bg-white text-blue-600 font-semibold px-6 py-3 rounded-full hover:bg-blue-50 transition-colors inline-flex items-center gap-2"
-                    >
-                      Read More
-                      <span className="text-lg">→</span>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-
-              {/* Card 3 */}
-              <div className="flip-card">
-                <div className="flip-card-inner shadow-lg hover:shadow-xl">
-                  <div className="flip-card-front relative">
-                    <img
-                      src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=400&h=280&fit=crop"
-                      alt="Lasik Eye Surgery"
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-                      <h3 className="text-xl font-bold text-white text-center">
-                        Lasik Eye Surgery
-                      </h3>
-                    </div>
-                  </div>
-                  <div className="flip-card-back bg-gradient-to-br from-blue-600 to-blue-800 flex flex-col justify-center items-center p-8 text-center">
-                    <h3 className="text-2xl font-bold text-white mb-4">
-                      Lasik Eye Surgery
-                    </h3>
-                    <p className="text-blue-100 leading-relaxed mb-6">
-                      Advanced laser vision correction surgery performed by experienced surgeons. Say goodbye to glasses and contacts with our cutting-edge LASIK procedures.
-                    </p>
-                    <Link
-                      to="/services"
-                      className="bg-white text-blue-600 font-semibold px-6 py-3 rounded-full hover:bg-blue-50 transition-colors inline-flex items-center gap-2"
-                    >
-                      Read More
-                      <span className="text-lg">→</span>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
+          </div>
         </div>
       </div>
     </section>

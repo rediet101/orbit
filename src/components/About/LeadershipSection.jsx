@@ -1,50 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Mail, Linkedin, Eye } from "lucide-react";
+import { EmptyState } from "@/components/ui/EmptyState";
 
-function LeadershipSection() {
-  const [team, setTeam] = useState([]);
-  const [loading, setLoading] = useState(true);
+function LeadershipSection({ data }) {
+  // Use data from props (passed from page-level fetch)
+  const team = data || [];
 
-  useEffect(() => {
-    const fetchTeam = async () => {
-      try {
-        const res = await fetch(import.meta.env.VITE_API_LINK + "about");
-        const data = await res.json();
-        setTeam(data.OurTeam || []);
-      } catch (error) {
-        console.error("Error fetching team:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchTeam();
-  }, []);
-
-  if (loading) {
-    return (
-      <section className="relative py-20 lg:py-28 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#DFF3FF] via-blue-50 to-[#E6F7FF]"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="h-14 bg-gradient-to-r from-blue-200 to-cyan-200 rounded-full w-96 mx-auto animate-pulse mb-4"></div>
-            <div className="h-6 bg-gradient-to-r from-blue-100 to-cyan-100 rounded-full w-64 mx-auto animate-pulse"></div>
-          </div>
-          <div className="grid md:grid-cols-2 gap-8">
-            {[1, 2].map((i) => (
-              <div key={i} className="h-64 bg-white/50 rounded-2xl animate-pulse"></div>
-            ))}
-          </div>
-        </div>
-      </section>
-    );
-  }
-
+  // If no data provided, show empty state with sparkle icon
   if (!team.length) {
     return (
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#DFF3FF] via-blue-50 to-[#E6F7FF]"></div>
-        <div className="relative text-center text-muted-foreground">
-          <p>No team members available.</p>
+        <div className="relative">
+          <EmptyState message="No team members available yet. Meet our experts soon!" />
         </div>
       </section>
     );

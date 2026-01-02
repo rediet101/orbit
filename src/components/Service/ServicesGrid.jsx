@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { CheckCircle2, Clock, Eye, ArrowRight } from "lucide-react";
 import parse from "html-react-parser";
+import { EmptyState } from "@/components/ui/EmptyState";
+import { LoadingState } from "@/components/ui/LoadingState";
 
 function ServicesGrid() {
   const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchServices = async () => {
@@ -13,27 +17,44 @@ function ServicesGrid() {
         if (json.data && Array.isArray(json.data)) {
           setServices(json.data);
         }
-      } catch (error) {
-        console.error("Error fetching services:", error);
+      } catch (err) {
+        console.error("Error fetching services:", err);
+        setError(err);
+      } finally {
+        setLoading(false);
       }
     };
     fetchServices();
   }, []);
 
+  if (loading) {
+    return (
+      <section className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#DFF3FF] via-blue-50 to-[#E6F7FF]"></div>
+        <div className="relative">
+          <LoadingState message="Loading services..." />
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#DFF3FF] via-blue-50 to-[#E6F7FF]"></div>
+        <div className="relative">
+          <EmptyState message="Unable to load services. Please try again later." />
+        </div>
+      </section>
+    );
+  }
+
   if (services.length === 0) {
     return (
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#DFF3FF] via-blue-50 to-[#E6F7FF]"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-4">
-            <div className="h-10 bg-white/50 rounded w-64 mx-auto animate-pulse"></div>
-            <div className="h-4 bg-white/50 rounded w-96 mx-auto animate-pulse"></div>
-          </div>
-          <div className="mt-12 space-y-8">
-            {[1, 2].map((i) => (
-              <div key={i} className="h-64 bg-white/30 rounded-3xl animate-pulse"></div>
-            ))}
-          </div>
+        <div className="relative">
+          <EmptyState message="No services available yet. Check back soon for our offerings!" />
         </div>
       </section>
     );

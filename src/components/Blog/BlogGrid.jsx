@@ -247,10 +247,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Calendar, ArrowRight, Clock, Tag } from "lucide-react";
+import { EmptyState } from "@/components/ui/EmptyState";
+import { LoadingState } from "@/components/ui/LoadingState";
 
 function BlogGrid({ tabs, selectedTab }) {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [showAll, setShowAll] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [lastPage, setLastPage] = useState(1);
@@ -268,6 +271,7 @@ function BlogGrid({ tabs, selectedTab }) {
 
   const fetchPosts = async (page = 1) => {
     setLoading(true);
+    setError(null);
     try {
       const res = await fetch(`${import.meta.env.VITE_API_LINK}posts?page=${page}`);
       const data = await res.json();
@@ -275,8 +279,9 @@ function BlogGrid({ tabs, selectedTab }) {
       setCurrentPage(data.current_page || 1);
       setLastPage(data.last_page || 1);
       setShowAll(false);
-    } catch (error) {
-      console.error("Error fetching posts:", error);
+    } catch (err) {
+      console.error("Error fetching posts:", err);
+      setError(err);
     } finally {
       setLoading(false);
     }
@@ -317,36 +322,15 @@ function BlogGrid({ tabs, selectedTab }) {
               </p>
             </div>
 
-            {/* Loading Skeleton */}
+            {/* Loading State */}
             {loading ? (
-              <div className="space-y-8">
-                {[1, 2, 3].map((i) => (
-                  <div
-                    key={i}
-                    className="group relative overflow-hidden rounded-3xl bg-card/90 backdrop-blur-sm border border-border/50 shadow-xl animate-pulse"
-                  >
-                    <div className="md:flex">
-                      <div className="md:w-1/3 bg-muted h-48 md:h-full" />
-                      <div className="md:w-2/3 p-6 space-y-4">
-                        <div className="h-4 bg-muted rounded w-1/3" />
-                        <div className="h-6 bg-muted rounded w-3/4" />
-                        <div className="space-y-2">
-                          <div className="h-4 bg-muted rounded w-full" />
-                          <div className="h-4 bg-muted rounded w-5/6" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <LoadingState message="Loading articles..." />
+            ) : error ? (
+              <EmptyState message="Unable to load articles. Please try again later." />
             ) : (
               <div className="space-y-10">
                 {visiblePosts.length === 0 ? (
-                  <div className="text-center py-20">
-                    <p className="text-lg text-muted-foreground">
-                      No articles found for this category.
-                    </p>
-                  </div>
+                  <EmptyState message="No articles found for this category. Check back soon!" />
                 ) : (
                   visiblePosts.map((post, index) => (
                     <article

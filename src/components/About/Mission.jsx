@@ -1,25 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Target, Eye, Heart } from "lucide-react"; // Optional: fallback icons
+import { Target, Eye, Heart } from "lucide-react";
+import { EmptyState } from "@/components/ui/EmptyState";
 
-function Mission() {
-  const [missionVision, setMissionVision] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchMissionVision = async () => {
-      try {
-  const res = await fetch(import.meta.env.VITE_API_LINK + "about");
-        const data = await res.json();
-        setMissionVision(data.MissionVision || []);
-      } catch (error) {
-        console.error("Error fetching mission & vision:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchMissionVision();
-  }, []);
+function Mission({ data }) {
+  // Use data from props (passed from page-level fetch)
+  const missionVision = data || [];
 
   // Optional: Fallback icons based on title
   const getFallbackIcon = (title) => {
@@ -30,27 +16,11 @@ function Mission() {
     return null;
   };
 
-  if (loading) {
-    return (
-      <section className="py-20 lg:py-28 bg-gradient-to-b from-background to-muted/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="h-12 bg-muted rounded w-80 mx-auto animate-pulse mb-4"></div>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="h-56 bg-muted/50 rounded-2xl animate-pulse"></div>
-            ))}
-          </div>
-        </div>
-      </section>
-    );
-  }
-
+  // If no data provided, show empty state with sparkle icon
   if (!missionVision.length) {
     return (
-      <section className="py-20 text-center text-muted-foreground">
-        <p>No mission, vision, or values available.</p>
+      <section className="py-20 bg-gradient-to-br from-[#DFF3FF] via-blue-50 to-[#E6F7FF]">
+        <EmptyState message="No mission, vision, or values available yet. Our story is being written!" />
       </section>
     );
   }
