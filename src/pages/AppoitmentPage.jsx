@@ -81,7 +81,7 @@ export default function AppointmentPage() {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-[#EBEBEB]">
         <Navigation />
         <SubmissionSuccess onBookAnother={() => setIsSubmitted(false)} />
         <Footer />
@@ -96,7 +96,7 @@ export default function AppointmentPage() {
 
       <section className="relative py-20 overflow-hidden">
         {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#DFF3FF] via-blue-50 to-[#E6F7FF]"></div>
+        <div className="absolute inset-0 bg-[#EBEBEB]"></div>
 
         {/* Floating Bubbles */}
         <div className="absolute top-10 left-[5%] animate-float">

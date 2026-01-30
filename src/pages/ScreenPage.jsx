@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
 import { Eye, CheckCircle, ArrowRight, ArrowLeft, X, RotateCcw } from "lucide-react";
 import back from "../assets/Orbit.jpg";
+import CTA from "@/components/CTA";
 
 // Vision Acuity Test Component
 function VisionAcuityTest({ onClose, onComplete }) {
@@ -101,9 +102,9 @@ function VisionAcuityTest({ onClose, onComplete }) {
         </button>
         
         <div className="text-center mb-6">
-          <h2 className="text-2xl font-bold text-blue-900 mb-2">Vision Acuity Test</h2>
-          <p className="text-blue-700/70">Type the letters from the highlighted row. Keep your screen at arm's length.</p>
-          <div className="mt-2 text-sm text-gray-500">Level {currentLevel + 1} of {levels.length} • Target: {levels[currentLevel].distance}</div>
+          <h2 className="text-2xl font-bold text-[#75B4DA] mb-2">Vision Acuity Test</h2>
+          <p className="text-[#75B4DA]">Type the letters from the highlighted row. Keep your screen at arm's length.</p>
+          <div className="mt-2 text-sm text-[#75B4DA]">Level {currentLevel + 1} of {levels.length} • Target: {levels[currentLevel].distance}</div>
         </div>
 
         {/* Wrong Answer Feedback */}
@@ -122,13 +123,13 @@ function VisionAcuityTest({ onClose, onComplete }) {
               <Button 
                 onClick={handleTryAgain}
                 variant="outline"
-                className="border-blue-300 text-blue-700 hover:bg-blue-50"
+                className="border-[#75B4DA] text-[#75B4DA] hover:bg-[#75B4DA]/10"
               >
                 <RotateCcw className="w-4 h-4 mr-2" /> Try Again
               </Button>
               <Button 
                 onClick={handleEndTest}
-                className="bg-blue-600 hover:bg-blue-700 text-white"
+                className="bg-[#75B4DA] hover:bg-[#75B4DA]/80 text-white"
               >
                 End Test & See Results
               </Button>
@@ -194,10 +195,10 @@ function VisionAcuityTest({ onClose, onComplete }) {
                 onChange={(e) => setUserInput(e.target.value.toUpperCase())}
                 onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
                 placeholder="Type the letters you see..."
-                className="flex-1 px-4 py-3 border border-blue-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-center text-xl uppercase tracking-widest font-mono"
+                className="flex-1 px-4 py-3 border border-[#75B4DA]/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#75B4DA] text-center text-xl uppercase tracking-widest font-mono"
                 autoFocus
               />
-              <Button onClick={handleSubmit} className="bg-blue-600 hover:bg-blue-700 text-white px-8">
+              <Button onClick={handleSubmit} className="bg-[#75B4DA] hover:bg-[#75B4DA]/80 text-white px-8">
                 Next <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </div>
@@ -284,15 +285,15 @@ function SymptomChecker({ onClose, onComplete }) {
         </button>
         
         <div className="text-center mb-8">
-          <h2 className="text-2xl font-bold text-blue-900 mb-2">Symptom Checker</h2>
-          <p className="text-blue-700/70">Answer honestly about your eye health symptoms.</p>
+          <h2 className="text-2xl font-bold text-[#75B4DA] mb-2">Symptom Checker</h2>
+          <p className="text-[#75B4DA]/70">Answer honestly about your eye health symptoms.</p>
           <div className="mt-4 w-full bg-gray-200 rounded-full h-2">
             <div 
-              className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+              className="bg-[#75B4DA] h-2 rounded-full transition-all duration-300"
               style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
             />
           </div>
-          <div className="mt-2 text-sm text-gray-500">Question {currentQuestion + 1} of {questions.length}</div>
+          <div className="mt-2 text-sm text-[#75B4DA]">Question {currentQuestion + 1} of {questions.length}</div>
         </div>
 
         <div className="bg-blue-50 rounded-xl p-8 mb-6 text-center">
@@ -304,14 +305,14 @@ function SymptomChecker({ onClose, onComplete }) {
         <div className="flex gap-4 justify-center">
           <Button 
             onClick={() => handleAnswer("yes")} 
-            className="bg-blue-600 hover:bg-blue-700 text-white px-12 py-6 text-lg"
+            className="bg-[#75B4DA] hover:bg-[#75B4DA]/80 text-white px-12 py-6 text-lg"
           >
             Yes
           </Button>
           <Button 
             onClick={() => handleAnswer("no")} 
             variant="outline"
-            className="border-blue-300 text-blue-700 hover:bg-blue-50 px-12 py-6 text-lg"
+            className="border-[#75B4DA] text-[#75B4DA] hover:bg-[#75B4DA]/10 px-12 py-6 text-lg"
           >
             No
           </Button>
@@ -382,9 +383,9 @@ function ColorVisionTest({ onClose, onComplete }) {
         </button>
         
         <div className="text-center mb-8">
-          <h2 className="text-2xl font-bold text-blue-900 mb-2">Color Vision Test</h2>
-          <p className="text-blue-700/70">What number do you see in the circle?</p>
-          <div className="mt-2 text-sm text-gray-500">Plate {currentPlate + 1} of {plates.length}</div>
+          <h2 className="text-2xl font-bold text-[#75B4DA] mb-2">Color Vision Test</h2>
+          <p className="text-[#75B4DA]/70">What number do you see in the circle?</p>
+          <div className="mt-2 text-sm text-[#75B4DA]">Plate {currentPlate + 1} of {plates.length}</div>
         </div>
 
         <div className="flex justify-center mb-6">
@@ -423,10 +424,10 @@ function ColorVisionTest({ onClose, onComplete }) {
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
             placeholder="Enter the number you see..."
-            className="flex-1 px-4 py-3 border border-blue-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-center text-xl"
+            className="flex-1 px-4 py-3 border border-[#75B4DA]/30 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#75B4DA] text-center text-xl"
             autoFocus
           />
-          <Button onClick={handleSubmit} className="bg-blue-600 hover:bg-blue-700 text-white px-8">
+          <Button onClick={handleSubmit} className="bg-[#75B4DA] hover:bg-[#75B4DA]/80 text-white px-8">
             Next <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         </div>
@@ -445,18 +446,18 @@ function TestResults({ results, onClose, onRetake }) {
         </button>
         
         <div className="text-center mb-8">
-          <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <CheckCircle className="w-10 h-10 text-blue-600" />
+          <div className="w-20 h-20 bg-[#75B4DA]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <CheckCircle className="w-10 h-10 text-[#75B4DA]" />
           </div>
-          <h2 className="text-2xl font-bold text-blue-900 mb-2">Test Complete!</h2>
+          <h2 className="text-2xl font-bold text-[#75B4DA] mb-2">Test Complete!</h2>
         </div>
 
         {results.type === "vision" && (
           <div className="space-y-6">
-            <div className="bg-blue-50 rounded-xl p-6 text-center">
-              <p className="text-sm text-blue-600 mb-1">Your Visual Acuity</p>
-              <p className="text-4xl font-bold text-blue-900">{results.score}</p>
-              <p className="text-sm text-blue-700 mt-2 font-medium">
+            <div className="bg-[#75B4DA]/10 rounded-xl p-6 text-center">
+              <p className="text-sm text-[#75B4DA] mb-1">Your Visual Acuity</p>
+              <p className="text-4xl font-bold text-[#75B4DA]">{results.score}</p>
+              <p className="text-sm text-[#75B4DA] mt-2 font-medium">
                 {results.description || (
                   results.score === "20/20" ? "Normal vision" :
                   results.score === "20/15" || results.score === "20/13" || results.score === "20/10" ? "Better than average vision" :
@@ -623,10 +624,10 @@ function TestResults({ results, onClose, onRetake }) {
         )}
 
         <div className="flex gap-4 mt-8">
-          <Button onClick={onRetake} variant="outline" className="flex-1 border-blue-300 text-blue-700 hover:bg-blue-50">
+          <Button onClick={onRetake} variant="outline" className="flex-1 border-[#75B4DA] text-[#75B4DA] hover:bg-[#75B4DA]/10">
             <RotateCcw className="w-4 h-4 mr-2" /> Retake Test
           </Button>
-          <Button asChild className="flex-1 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white shadow-lg">
+          <Button asChild className="flex-1 bg-[#75B4DA] hover:bg-[#75B4DA]/80 text-white shadow-lg">
             <Link to="/appointment">
               <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 4v12l-4-2-4 2V4M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -688,9 +689,9 @@ export default function ScreenPage() {
           </div>
 
           <h1 className="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-tight text-white drop-shadow-lg animate-slide-up">
-            Screen <span className="text-blue-400">Yourself</span>
+            Screen <span className="text-[#75B4DA]">Yourself</span>
           </h1>
-
+ Broadway
           <p className="text-lg lg:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed drop-shadow animate-fade-in-delay">
             Take a quick eye health assessment from the comfort of your home. 
             Our screening tool helps identify potential vision issues and guides you 
@@ -704,7 +705,7 @@ export default function ScreenPage() {
 
       {/* Main Content Section */}
       <section className="relative py-16 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#DFF3FF] via-blue-50 to-[#E6F7FF]"></div>
+        <div className="absolute inset-0 bg-[#EBEBEB]"></div>
         
         {/* Floating Bubbles */}
         <div className="absolute top-10 left-[5%] animate-float"><div className="w-4 h-4 rounded-full bg-blue-400/20"></div></div>
@@ -730,50 +731,50 @@ export default function ScreenPage() {
               <div className="absolute bottom-0 left-0 w-40 h-40 bg-blue-300/10 rounded-full translate-y-20 -translate-x-20 group-hover:scale-125 transition-transform duration-700 delay-100"></div>
               
               {/* Icon Container */}
-              <div className="relative w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-blue-200 group-hover:scale-110 transition-transform duration-300">
+              <div className="relative w-20 h-20 bg-[#75B4DA] rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-[#75B4DA]/20 group-hover:scale-110 transition-transform duration-300">
                 <Eye className="w-10 h-10 text-white" />
               </div>
               
-              <h3 className="relative text-2xl font-bold text-blue-900 mb-4 group-hover:text-blue-800 transition-colors">Vision Acuity Test</h3>
-              <p className="relative text-blue-700/80 mb-6 leading-relaxed">
+              <h3 className="relative text-2xl font-bold text-[#75B4DA] mb-4 group-hover:text-[#75B4DA]/80 transition-colors">Vision Acuity Test</h3>
+              <p className="relative text-[#75B4DA] mb-6 leading-relaxed">
                 Test your visual sharpness with our online eye chart. Check how well you can see at different distances.
               </p>
               
               {/* Features List */}
               <ul className="relative space-y-3 mb-8">
-                <li className="flex items-center gap-3 text-sm text-blue-700">
-                  <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center">
-                    <CheckCircle className="w-3 h-3 text-blue-500" />
+                <li className="flex items-center gap-3 text-sm text-[#75B4DA]">
+                  <div className="w-6 h-6 rounded-full bg-[#75B4DA]/10 flex items-center justify-center">
+                    <CheckCircle className="w-3 h-3 text-[#75B4DA]" />
                   </div>
                   <span>Takes only 5 minutes</span>
                 </li>
-                <li className="flex items-center gap-3 text-sm text-blue-700">
-                  <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center">
-                    <CheckCircle className="w-3 h-3 text-blue-500" />
+                <li className="flex items-center gap-3 text-sm text-[#75B4DA]">
+                  <div className="w-6 h-6 rounded-full bg-[#75B4DA]/10 flex items-center justify-center">
+                    <CheckCircle className="w-3 h-3 text-[#75B4DA]" />
                   </div>
                   <span>No special equipment needed</span>
                 </li>
-                <li className="flex items-center gap-3 text-sm text-blue-700">
-                  <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center">
-                    <CheckCircle className="w-3 h-3 text-blue-500" />
+                <li className="flex items-center gap-3 text-sm text-[#75B4DA]">
+                  <div className="w-6 h-6 rounded-full bg-[#75B4DA]/10 flex items-center justify-center">
+                    <CheckCircle className="w-3 h-3 text-[#75B4DA]" />
                   </div>
                   <span>Instant detailed results</span>
                 </li>
               </ul>
               
               {/* Button */}
-              <Button 
+              <button 
                 onClick={() => setActiveTest("vision")}
-                className="relative w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white shadow-lg shadow-blue-200 group-hover:shadow-xl group-hover:shadow-blue-300 transition-all duration-300"
+                className="relative w-full h-12 rounded-xl bg-[#75B4DA] hover:bg-[#75B4DA]/80 text-white shadow-lg shadow-[#75B4DA]/20 group-hover:shadow-xl group-hover:shadow-[#75B4DA]/30 transition-all duration-300 flex items-center justify-center gap-2"
               >
-                <Eye className="w-4 h-4 mr-2" />
+                <Eye className="w-4 h-4" />
                 Start Vision Test
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
               
               {/* Corner Badge */}
               <div className="absolute top-4 right-4">
-                <Badge className="bg-blue-100 text-blue-700 hover:bg-blue-200 border-blue-200">
+                <Badge className="bg-[#75B4DA]/10 text-[#75B4DA] hover:bg-[#75B4DA]/20 border-[#75B4DA]/20">
                   Quick Test
                 </Badge>
               </div>
@@ -786,52 +787,52 @@ export default function ScreenPage() {
               <div className="absolute bottom-0 left-0 w-40 h-40 bg-blue-300/10 rounded-full translate-y-20 -translate-x-20 group-hover:scale-125 transition-transform duration-700 delay-100"></div>
               
               {/* Icon Container */}
-              <div className="relative w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-blue-200 group-hover:scale-110 transition-transform duration-300">
+              <div className="relative w-20 h-20 bg-[#75B4DA] rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-[#75B4DA]/20 group-hover:scale-110 transition-transform duration-300">
                 <CheckCircle className="w-10 h-10 text-white" />
               </div>
               
-              <h3 className="relative text-2xl font-bold text-blue-900 mb-4 group-hover:text-blue-800 transition-colors">Symptom Checker</h3>
-              <p className="relative text-blue-700/80 mb-6 leading-relaxed">
+              <h3 className="relative text-2xl font-bold text-[#75B4DA] mb-4 group-hover:text-[#75B4DA]/80 transition-colors">Symptom Checker</h3>
+              <p className="relative text-[#75B4DA] mb-6 leading-relaxed">
                 Answer a few questions about your eye health symptoms to get personalized recommendations.
               </p>
               
               {/* Features List */}
               <ul className="relative space-y-3 mb-8">
-                <li className="flex items-center gap-3 text-sm text-blue-700">
-                  <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center">
-                    <CheckCircle className="w-3 h-3 text-blue-500" />
+                <li className="flex items-center gap-3 text-sm text-[#75B4DA]">
+                  <div className="w-6 h-6 rounded-full bg-[#75B4DA]/10 flex items-center justify-center">
+                    <CheckCircle className="w-3 h-3 text-[#75B4DA]" />
                   </div>
                   <span>Personalized assessment</span>
                 </li>
-                <li className="flex items-center gap-3 text-sm text-blue-700">
-                  <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center">
-                    <CheckCircle className="w-3 h-3 text-blue-500" />
+                <li className="flex items-center gap-3 text-sm text-[#75B4DA]">
+                  <div className="w-6 h-6 rounded-full bg-[#75B4DA]/10 flex items-center justify-center">
+                    <CheckCircle className="w-3 h-3 text-[#75B4DA]" />
                   </div>
                   <span>Expert recommendations</span>
                 </li>
-                <li className="flex items-center gap-3 text-sm text-blue-700">
-                  <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center">
-                    <CheckCircle className="w-3 h-3 text-blue-500" />
+                <li className="flex items-center gap-3 text-sm text-[#75B4DA]">
+                  <div className="w-6 h-6 rounded-full bg-[#75B4DA]/10 flex items-center justify-center">
+                    <CheckCircle className="w-3 h-3 text-[#75B4DA]" />
                   </div>
                   <span>Detailed symptom report</span>
                 </li>
               </ul>
               
               {/* Button */}
-              <Button 
+              <button 
                 onClick={() => setActiveTest("symptoms")}
-                className="relative w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white shadow-lg shadow-blue-200 group-hover:shadow-xl group-hover:shadow-blue-300 transition-all duration-300"
+                className="relative w-full h-12 rounded-xl bg-[#75B4DA] hover:bg-[#75B4DA]/80 text-white shadow-lg shadow-[#75B4DA]/20 group-hover:shadow-xl group-hover:shadow-[#75B4DA]/30 transition-all duration-300 flex items-center justify-center gap-2"
               >
-                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 Check Symptoms
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
               
               {/* Corner Badge */}
               <div className="absolute top-4 right-4">
-                <Badge className="bg-blue-100 text-blue-700 hover:bg-blue-200 border-blue-200">
+                <Badge className="bg-[#75B4DA]/10 text-[#75B4DA] hover:bg-[#75B4DA]/20 border-[#75B4DA]/20">
                   Detailed
                 </Badge>
               </div>
@@ -844,52 +845,52 @@ export default function ScreenPage() {
               <div className="absolute bottom-0 left-0 w-40 h-40 bg-blue-300/10 rounded-full translate-y-20 -translate-x-20 group-hover:scale-125 transition-transform duration-700 delay-100"></div>
               
               {/* Icon Container */}
-              <div className="relative w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-blue-200 group-hover:scale-110 transition-transform duration-300">
+              <div className="relative w-20 h-20 bg-[#75B4DA] rounded-2xl flex items-center justify-center mb-6 shadow-lg shadow-[#75B4DA]/20 group-hover:scale-110 transition-transform duration-300">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-r from-red-500 via-yellow-500 to-green-500" />
               </div>
               
-              <h3 className="relative text-2xl font-bold text-blue-900 mb-4 group-hover:text-blue-800 transition-colors">Color Vision Test</h3>
-              <p className="relative text-blue-700/80 mb-6 leading-relaxed">
+              <h3 className="relative text-2xl font-bold text-[#75B4DA] mb-4 group-hover:text-[#75B4DA]/80 transition-colors">Color Vision Test</h3>
+              <p className="relative text-[#75B4DA] mb-6 leading-relaxed">
                 Check your ability to distinguish colors with our Ishihara-style color blindness screening test.
               </p>
               
               {/* Features List */}
               <ul className="relative space-y-3 mb-8">
-                <li className="flex items-center gap-3 text-sm text-blue-700">
-                  <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center">
-                    <CheckCircle className="w-3 h-3 text-blue-500" />
+                <li className="flex items-center gap-3 text-sm text-[#75B4DA]">
+                  <div className="w-6 h-6 rounded-full bg-[#75B4DA]/10 flex items-center justify-center">
+                    <CheckCircle className="w-3 h-3 text-[#75B4DA]" />
                   </div>
                   <span>Quick and easy</span>
                 </li>
-                <li className="flex items-center gap-3 text-sm text-blue-700">
-                  <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center">
-                    <CheckCircle className="w-3 h-3 text-blue-500" />
+                <li className="flex items-center gap-3 text-sm text-[#75B4DA]">
+                  <div className="w-6 h-6 rounded-full bg-[#75B4DA]/10 flex items-center justify-center">
+                    <CheckCircle className="w-3 h-3 text-[#75B4DA]" />
                   </div>
                   <span>Color deficiency detection</span>
                 </li>
-                <li className="flex items-center gap-3 text-sm text-blue-700">
-                  <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center">
-                    <CheckCircle className="w-3 h-3 text-blue-500" />
+                <li className="flex items-center gap-3 text-sm text-[#75B4DA]">
+                  <div className="w-6 h-6 rounded-full bg-[#75B4DA]/10 flex items-center justify-center">
+                    <CheckCircle className="w-3 h-3 text-[#75B4DA]" />
                   </div>
                   <span>Comprehensive report</span>
                 </li>
               </ul>
               
               {/* Button */}
-              <Button 
+              <button 
                 onClick={() => setActiveTest("color")}
-                className="relative w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white shadow-lg shadow-blue-200 group-hover:shadow-xl group-hover:shadow-blue-300 transition-all duration-300"
+                className="relative w-full h-12 rounded-xl bg-[#75B4DA] hover:bg-[#75B4DA]/80 text-white shadow-lg shadow-[#75B4DA]/20 group-hover:shadow-xl group-hover:shadow-[#75B4DA]/30 transition-all duration-300 flex items-center justify-center gap-2"
               >
-                <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
                 </svg>
                 Take Color Test
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
               
               {/* Corner Badge */}
               <div className="absolute top-4 right-4">
-                <Badge className="bg-blue-100 text-blue-700 hover:bg-blue-200 border-blue-200">
+                <Badge className="bg-[#75B4DA]/10 text-[#75B4DA] hover:bg-[#75B4DA]/20 border-[#75B4DA]/20">
                   Fun & Interactive
                 </Badge>
               </div>
@@ -935,6 +936,7 @@ export default function ScreenPage() {
         `}</style>
       </section>
 
+      <CTA />
       <Footer />
 
       {/* Test Modals */}

@@ -67,7 +67,7 @@ function FAQContent() {
   return (
     <section className="relative py-20 lg:py-28 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#DFF3FF] via-blue-50 to-[#E6F7FF]"></div>
+      <div className="absolute inset-0 bg-[#EBEBEB]"></div>
       
       {/* Floating Bubbles */}
       <div className="absolute top-10 left-[5%] animate-float">
@@ -123,10 +123,10 @@ function FAQContent() {
         {/* Section Header */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-primary/10 backdrop-blur-sm px-4 py-2 rounded-full mb-4">
-            <HelpCircle className="h-5 w-5 text-primary" />
-            <span className="text-sm font-semibold text-primary">FAQs</span>
+            <HelpCircle className="h-5 w-5 text-[#75B4DA]" />
+            <span className="text-sm font-semibold text-[#75B4DA]">FAQs</span>
           </div>
-          <h2 className="text-4xl lg:text-5xl font-bold text-foreground bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
+          <h2 className="text-4xl lg:text-6xl font-bold text-[#75B4DA] bg-clip-text text-transparent bg-[#75B4DA]">
             Frequently Asked Questions
           </h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -148,9 +148,9 @@ function FAQContent() {
               <CardHeader className="relative z-10 pb-4">
                 <div className="flex items-center gap-3">
                   <div className="p-3 bg-primary/10 backdrop-blur-sm rounded-2xl border border-primary/20 group-hover:bg-primary/15 transition-colors">
-                    <HelpCircle className="h-6 w-6 text-primary" />
+                    <HelpCircle className="h-6 w-6 text-[#75B4DA]" />
                   </div>
-                  <CardTitle className="text-xl lg:text-2xl font-bold text-foreground">
+                  <CardTitle className="text-xl lg:text-2xl font-bold text-[#75B4DA]">
                     {category.title}
                   </CardTitle>
                 </div>
@@ -164,9 +164,9 @@ function FAQContent() {
                       value={`item-${categoryIndex}-${faqIndex}`}
                       className="border-b border-border/30 last:border-0"
                     >
-                      <AccordionTrigger className="text-left text-foreground hover:text-primary hover:no-underline py-5 group/item">
+                      <AccordionTrigger className="text-left text-[#75B4DA] hover:text-[#75B4DA] hover:no-underline py-5 group/item">
                         <div className="flex items-center gap-3">
-                          <ChevronDown className="h-5 w-5 text-primary transition-transform duration-300 group-data-[state=open]/item:rotate-180" />
+                          <ChevronDown className="h-5 w-5 text-[#75B4DA] transition-transform duration-300 group-data-[state=open]/item:rotate-180" />
                           <span className="font-medium text-base lg:text-lg">
                             {faq.question}
                           </span>

@@ -1,4 +1,52 @@
 import { useMemo, useEffect, useState, useRef } from "react";
+import { motion, useReducedMotion } from "framer-motion";
+
+const MarqueeColumn = ({ items, direction = "up", speed = 40 }) => {
+  const columnRef = useRef(null);
+  const [duplicateItems, setDuplicateItems] = useState([]);
+
+  useEffect(() => {
+    // Duplicate items to ensure smooth infinite loop
+    setDuplicateItems([...items, ...items, ...items]);
+  }, [items]);
+
+  const yValues = direction === "up" 
+    ? [0, -100 / 3 + "%"] 
+    : ["-33.33%", "0%"];
+
+  return (
+    <div className="relative overflow-hidden h-[400px] w-full px-2">
+      <motion.div
+        className="flex flex-col gap-6 py-4"
+        animate={{
+          y: yValues
+        }}
+        transition={{
+          duration: speed,
+          repeat: Infinity,
+          ease: "linear",
+          repeatType: "loop"
+        }}
+      >
+        {duplicateItems.map((item, idx) => (
+          <div
+            key={`${item.name}-${idx}`}
+            className="flex items-center justify-center p-6 bg-white rounded-2xl shadow-sm border border-gray-100/50 hover:shadow-xl transition-all duration-500 hover:-translate-y-1 hover:scale-[1.02] group"
+          >
+            <img
+              src={item.logo}
+              alt={item.name}
+              className={`
+                w-full h-16 object-contain transition-all duration-300
+                ${item.type === 'grayscale' ? 'grayscale group-hover:grayscale-0' : ''}
+              `}
+            />
+          </div>
+        ))}
+      </motion.div>
+    </div>
+  );
+};
 
 const Partners = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -42,7 +90,16 @@ const Partners = () => {
     const colorfulLogos = [...sisterCompanyLogos, ...donorLogos].sort(() => Math.random() - 0.5);
     // Combine with banks (not shuffled)
     return [...colorfulLogos, ...bankLogos];
-  }, []);
+  }, [sisterCompanyLogos, donorLogos, bankLogos]);
+
+  // Distribute logos into 6 columns for the marquee
+  const columns = useMemo(() => {
+    const cols = [[], [], [], [], [], []];
+    allPartners.forEach((partner, index) => {
+      cols[index % 6].push(partner);
+    });
+    return cols;
+  }, [allPartners]);
 
   // Intersection Observer for scroll animation
   useEffect(() => {
@@ -63,54 +120,35 @@ const Partners = () => {
   }, []);
 
   return (
-    <div ref={sectionRef} className="bg-[#DFF3FF] py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div ref={sectionRef} className="bg-[#EBEBEB] py-12 relative overflow-hidden">
+      {/* Background soft elements */}
+      {/* <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-[#DFF3FF]/50 to-transparent pointer-events-none z-10" />
+      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-[#DFF3FF]/50 to-transparent pointer-events-none z-10" /> */}
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-0">
         {/* Main Header */}
-        <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-            <span className="text-blue-600">Partnering</span>{" "}
-            <span className="text-[#0F5F4C]">Companies</span>
+        <div className={`text-center mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h2 className="text-4xl lg:text-5xl font-bold mb-6 tracking-tight">
+            <span className="text-[#75B4DA]">Partnering</span>{" "}
+            <span className="text-[#75B4DA]">Companies</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed font-medium">
             We partner with our sister companies to bring telemedicine and integrated health services 
-            to a broader community. Our clients include embassies, businesses, nonprofits, and individuals 
-            who trust us for reliable, patient-focused care.
+            to a broader community. Our clients include embassies, businesses, nonprofits, and individuals.
           </p>
         </div>
 
-        {/* All Partners Grid - Mashed Together */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-          {allPartners.map((partner, index) => (
-            <div
-              key={index}
-              className={`
-                flex items-center justify-center p-4 bg-white rounded-xl shadow-md 
-                hover:shadow-xl transition-all duration-500 
-                hover:-translate-y-2 hover:scale-105
-                ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}
-              `}
-              style={{
-                transitionDelay: `${index * 50}ms`,
-              }}
-            >
-              <img
-                src={partner.logo}
-                alt={partner.name}
-                className={`
-                  w-full h-16 object-contain transition-all duration-300
-                  ${partner.type === 'grayscale' ? 'grayscale hover:grayscale-0' : ''}
-                `}
-              />
-            </div>
+        {/* Vertical Marquee Walls */}
+        <div className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 md:gap-4 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
+          {columns.map((colItems, idx) => (
+            <MarqueeColumn 
+              key={idx} 
+              items={colItems} 
+              direction={idx % 2 === 0 ? "up" : "down"}
+              speed={30 + (idx * 5)} // Varied speeds for more dynamic feel
+            />
           ))}
         </div>
-
-        {/* View All Partners Button */}
-        {/* <div className={`text-center mt-12 transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <button className="bg-blue-500 hover:bg-[#0F5F4C] text-white font-semibold px-8 py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-            View all partners
-          </button>
-        </div> */}
       </div>
     </div>
   );

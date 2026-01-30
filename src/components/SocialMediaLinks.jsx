@@ -80,7 +80,7 @@ export default function SocialMediaLinks() {
           {/* Feedback Button */}
           <Link
             to="/contact"
-            className="feedback-btn group relative flex flex-col items-center justify-center py-4 px-3 bg-gradient-to-b from-blue-500 to-blue-600 rounded-full shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:from-blue-600 hover:to-blue-700"
+            className="feedback-btn group relative flex flex-col items-center justify-center py-4 px-3 bg-[#75B4DA] rounded-full shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:from-blue-600 hover:to-blue-700"
             aria-label="Feedback"
           >
             <MessageCircle className="w-5 h-5 text-white mb-2" />
@@ -105,7 +105,7 @@ export default function SocialMediaLinks() {
               className={`social-link group relative flex items-center justify-center w-12 h-12 bg-white rounded-full shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-2xl ${social.color}`}
               aria-label={social.name}
             >
-              <social.icon className="w-5 h-5 text-blue-600 group-hover:text-white transition-colors duration-300" />
+              <social.icon className="w-5 h-5 text-[#75B4DA] group-hover:text-white transition-colors duration-300" />
               
               {/* Tooltip */}
               <span className="absolute right-full mr-4 px-3 py-1.5 bg-gray-900 text-white text-sm rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none">

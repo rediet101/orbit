@@ -2,6 +2,7 @@ import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import MediaHero from "@/components/Media/MediaHero";
 import { FileText, Download, ExternalLink, BookOpen } from "lucide-react";
+import CTA from "@/components/CTA";
 
 export default function PublicationPage() {
   const publications = [
@@ -48,7 +49,7 @@ export default function PublicationPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-[#EBEBEB]">
       <Navigation />
       <MediaHero 
         badge="Research & Publications"
@@ -63,15 +64,15 @@ export default function PublicationPage() {
             {publications.map((pub, index) => (
               <div
                 key={index}
-                className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-6 border border-gray-100"
+                className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 p-6 border border-[#75B4DA]"
               >
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <FileText className="w-6 h-6 text-blue-600" />
+                      <FileText className="w-6 h-6 text-[#75B4DA]" />
                     </div>
                     <div>
-                      <span className="text-xs font-semibold text-blue-600 uppercase tracking-wider">
+                      <span className="text-xs font-semibold text-[#75B4DA] uppercase tracking-wider">
                         {pub.type} • {pub.year}
                       </span>
                       <h3 className="text-xl font-bold text-gray-800 mt-1">
@@ -93,7 +94,7 @@ export default function PublicationPage() {
                       href={pub.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-4 py-2 border border-blue-300 text-blue-700 rounded-lg hover:bg-blue-50 transition-colors"
+                      className="flex items-center gap-2 px-4 py-2 border border-[#75B4DA] text-[#75B4DA] rounded-lg hover:bg-blue-50 transition-colors"
                     >
                       <ExternalLink className="w-4 h-4" />
                       View
@@ -105,7 +106,7 @@ export default function PublicationPage() {
           </div>
         </div>
       </main>
-
+<CTA/>
       <Footer />
     </div>
   );

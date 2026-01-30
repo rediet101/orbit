@@ -19,14 +19,14 @@ function Mission({ data }) {
   // If no data provided, show empty state with sparkle icon
   if (!missionVision.length) {
     return (
-      <section className="py-20 bg-gradient-to-br from-[#DFF3FF] via-blue-50 to-[#E6F7FF]">
+      <section className="py-20 bg-[#EBEBEB]">
         <EmptyState message="No mission, vision, or values available yet. Our story is being written!" />
       </section>
     );
   }
 
   return (
-    <section className="relative py-20 lg:py-32 bg-gradient-to-br from-[#DFF3FF] via-blue-50 to-[#E6F7FF] overflow-hidden">
+    <section className="relative py-20 lg:py-32 bg-[#EBEBEB] overflow-hidden">
              {/* Many Floating Bubbles */}
       <div className="absolute top-10 left-[5%] animate-float">
         <div className="w-4 h-4 rounded-full bg-primary/20"></div>
@@ -80,7 +80,7 @@ function Mission({ data }) {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-foreground bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
+          <h2 className="text-5xl lg:text-6xl font-bold text-foreground bg-clip-text text-transparent bg-[#75B4DA]">
             Our Mission, Vision & Values
           </h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -99,7 +99,7 @@ function Mission({ data }) {
                 className="group relative h-[400px] perspective-1000"
               >
                 {/* Flip Container */}
-                <div className="relative w-full h-full transition-all duration-700 preserve-3d group-hover:rotate-y-180">
+                <div className="relative w-full h-full transition-all duration-700 preserve-3d group-hover:rotate-y-180 border border-[#75B4DA] rounded-3xl">
                   
                   {/* Front Face */}
                   <Card className="absolute inset-0 backface-hidden flex flex-col items-center justify-center p-6 text-center rounded-3xl bg-card/90 backdrop-blur-sm border border-border/50 shadow-lg overflow-hidden">
@@ -126,7 +126,7 @@ function Mission({ data }) {
                         )}
                       </div>
 
-                      <CardTitle className="text-2xl lg:text-3xl font-bold text-foreground">
+                      <CardTitle className="text-2xl lg:text-3xl font-bold text-[#75B4DA]">
                         {item.title}
                       </CardTitle>
                       
@@ -143,7 +143,7 @@ function Mission({ data }) {
                      <div className="absolute bottom-0 left-0 -ml-8 -mb-8 w-24 h-24 rounded-full bg-secondary/10 blur-xl"></div>
 
                     <CardContent className="relative z-10">
-                      <h3 className="text-xl font-bold text-primary mb-4">{item.title}</h3>
+                      <h3 className="text-3xl font-bold text-[#75B4DA] mb-4">{item.title}</h3>
                       <p className="text-muted-foreground leading-relaxed text-base lg:text-lg">
                         {item.description}
                       </p>

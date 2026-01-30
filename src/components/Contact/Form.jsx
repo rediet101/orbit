@@ -317,15 +317,15 @@ function ContactForm() {
   // Success State
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-background to-muted/30 flex flex-col">
+      <div className="min-h-screen bg-white flex flex-col">
         <Navigation />
         <div className=" flex-1 py-20 lg:py-32">
           <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
             <div className="relative inline-block">
-              <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full animate-pulse"></div>
-              <CheckCircle2 className="h-20 w-20 text-primary relative z-10" />
+              <div className="absolute inset-0 bg-white blur-3xl rounded-full animate-pulse"></div>
+              <CheckCircle2 className="h-20 w-20 text-[#75B4DA] relative z-10" />
             </div>
-            <h1 className="text-4xl lg:text-5xl font-bold text-foreground bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
+            <h1 className="text-4xl lg:text-5xl font-bold text-foreground bg-clip-text text-transparent bg-gradient-to-r from-[#75B4DA] to-[#75B4DA]/70">
               Message Sent Successfully!
             </h1>
             <p className="text-lg text-muted-foreground max-w-xl mx-auto">
@@ -353,18 +353,18 @@ function ContactForm() {
       {/* Form Card */}
       <Card className="group relative overflow-hidden rounded-3xl backdrop-blur-sm shadow-2xl shadow-blue-100 hover:shadow-3xl transition-all duration-500 bg-white/90 border border-blue-100">
           {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
+          <div className="absolute inset-0 bg-white transition-opacity"></div>
 
           <CardHeader className="relative z-10 pb-8">
             <div className="flex items-center gap-3 mb-3">
-              <div className="p-3 backdrop-blur-sm rounded-2xl bg-blue-100 border border-blue-200">
-                <Send className="h-6 w-6 text-blue-600" />
+              <div className="p-3 backdrop-blur-sm rounded-2xl bg-[#75B4DA]/20 border border-[#75B4DA]/20">
+                <Send className="h-6 w-6 text-[#75B4DA]" />
               </div>
-              <CardTitle className="text-3xl lg:text-4xl font-bold text-blue-900">
+              <CardTitle className="text-3xl lg:text-4xl font-bold text-[#75B4DA]">
                 Get in Touch
               </CardTitle>
             </div>
-            <CardDescription className="text-base text-blue-700/70">
+            <CardDescription className="text-base text-[#75B4DA]/70">
               Fill out the form below and we'll respond within <strong>24 hours</strong>.
             </CardDescription>
           </CardHeader>
@@ -374,7 +374,7 @@ function ContactForm() {
               {/* Name Fields */}
               <div className="grid md:grid-cols-2 gap-5">
                 <div className="space-y-2">
-                  <Label htmlFor="firstName" className="font-medium">First Name *</Label>
+                  <Label htmlFor="firstName" className="font-medium text-[#75B4DA]">First Name *</Label>
                   <Input
                     id="firstName"
                     value={formData.firstName}
@@ -385,7 +385,7 @@ function ContactForm() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="lastName" className="font-medium">Last Name *</Label>
+                  <Label htmlFor="lastName" className="font-medium text-[#75B4DA]">Last Name *</Label>
                   <Input
                     id="lastName"
                     value={formData.lastName}
@@ -400,7 +400,7 @@ function ContactForm() {
               {/* Email & Phone */}
               <div className="grid md:grid-cols-2 gap-5">
                 <div className="space-y-2">
-                  <Label htmlFor="email" className="font-medium">Email Address *</Label>
+                  <Label htmlFor="email" className="font-medium text-[#75B4DA]">Email Address *</Label>
                   <Input
                     id="email"
                     type="email"
@@ -412,7 +412,7 @@ function ContactForm() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="phone" className="font-medium">Phone Number</Label>
+                  <Label htmlFor="phone" className="font-medium text-[#75B4DA]">Phone Number</Label>
                   <Input
                     id="phone"
                     type="tel"
@@ -429,7 +429,7 @@ function ContactForm() {
 
               {/* Subject */}
               <div className="space-y-2">
-                <Label htmlFor="subject" className="font-medium">Subject *</Label>
+                <Label htmlFor="subject" className="font-medium text-[#75B4DA]">Subject *</Label>
                 <Select onValueChange={handleSelectChange} value={formData.subject}>
                   <SelectTrigger className="h-12 border-border/50 focus:border-primary focus:ring-2 focus:ring-primary/20">
                     <SelectValue placeholder="Choose a subject" />
@@ -453,7 +453,7 @@ function ContactForm() {
 
               {/* Message */}
               <div className="space-y-2">
-                <Label htmlFor="message" className="font-medium">Message *</Label>
+                <Label htmlFor="message" className="font-medium text-[#75B4DA]">Message *</Label>
                 <Textarea
                   id="message"
                   value={formData.message}
@@ -475,7 +475,7 @@ function ContactForm() {
               <Button
                 type="submit"
                 size="lg"
-                className="w-full h-14 text-lg font-semibold group relative overflow-hidden text-white bg-blue-600 hover:bg-blue-700"
+                className="w-full h-14 text-lg font-semibold group relative overflow-hidden text-white bg-[#75B4DA] hover:bg-[#75B4DA]/80"
                 disabled={loading}
               >
                 <span className="relative z-10 flex items-center justify-center gap-2">
@@ -491,7 +491,7 @@ function ContactForm() {
                     </>
                   )}
                 </span>
-                <div className="absolute inset-0 bg-blue-700 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                <div className="absolute inset-0 bg-[#75B4DA]/80 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
               </Button>
             </form>
           </CardContent>

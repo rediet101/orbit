@@ -4,6 +4,7 @@ import MediaHero from "@/components/Media/MediaHero";
 import { BookOpen, Video, FileText, GraduationCap, Brain, Users, Trophy, Clock, ChevronRight, PlayCircle, Download, Share2, Bookmark, Award, CheckCircle, BarChart } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import CTA from "@/components/CTA";
 
 export default function EducationPage() {
   const [activeFilter, setActiveFilter] = useState("all");
@@ -112,7 +113,7 @@ export default function EducationPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+    <div className="min-h-screen bg-[#EBEBEB]">
       <Navigation />
       <MediaHero 
         badge="Education Center"
@@ -134,12 +135,12 @@ export default function EducationPage() {
               <div className="w-24 h-24 bg-blue-200 rounded-full blur-3xl opacity-50"></div>
             </div>
             
-            <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-6 py-3 rounded-full text-sm font-semibold mb-6 border border-blue-200">
+            <div className="inline-flex items-center gap-2 bg-blue-100 text-[#75B4DA] px-6 py-3 rounded-full text-sm font-semibold mb-6 border border-blue-200">
               <GraduationCap className="w-5 h-5" />
               Knowledge Center
             </div>
             
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-800 mb-4">
+            <h1 className="text-5xl md:text-6xl font-bold text-[#75B4DA] mb-4">
               Eye Care Education
             </h1>
             
@@ -188,8 +189,8 @@ export default function EducationPage() {
                   onClick={() => setActiveFilter(filter.id)}
                   className={`px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center gap-2 ${
                     activeFilter === filter.id
-                      ? "bg-blue-600 text-white shadow-lg shadow-blue-200"
-                      : "bg-white text-gray-600 hover:bg-blue-50 border border-gray-200"
+                      ? "bg-[#75B4DA] text-white shadow-lg shadow-blue-200"
+                      : "bg-white text-gray-600 hover:bg-[#75B4DA] border border-gray-200"
                   }`}
                 >
                   {filter.label}
@@ -228,12 +229,12 @@ export default function EducationPage() {
                 <div className="relative bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
                   {/* Progress Bar */}
                   {item.progress > 0 && (
-                    <div className="h-1.5 bg-blue-50">
+                    <div className="h-1.5 bg-[#75B4DA]/50">
                       <motion.div 
                         initial={{ width: 0 }}
                         animate={{ width: `${item.progress}%` }}
                         transition={{ delay: 0.5 + index * 0.1, duration: 1, ease: "easeOut" }}
-                        className={`h-full bg-blue-600`}
+                        className={`h-full bg-[#75B4DA]`}
                       />
                     </div>
                   )}
@@ -242,19 +243,19 @@ export default function EducationPage() {
                     {/* Icon and Type */}
                     <div className="flex items-center justify-between mb-4">
                       <div className={`w-16 h-16 rounded-xl bg-blue-100 flex items-center justify-center shadow-sm border border-blue-200`}>
-                        <item.icon className="w-8 h-8 text-blue-600" />
+                        <item.icon className="w-8 h-8 text-[#75B4DA]" />
                       </div>
                       <span className={`text-xs font-semibold px-3 py-1 rounded-full ${
-                        item.category === "beginner" ? "bg-blue-50 text-blue-700 border border-blue-200" :
-                        item.category === "intermediate" ? "bg-blue-100 text-blue-800 border border-blue-300" :
-                        "bg-blue-200 text-blue-900 border border-blue-400"
+                        item.category === "beginner" ? "bg-[#75B4DA]/20 text-[#75B4DA] border border-[#75B4DA]/50" :
+                        item.category === "intermediate" ? "bg-[#75B4DA]/20 text-[#75B4DA] border border-[#75B4DA]/50" :
+                        "bg-[#75B4DA]/20 text-[#75B4DA] border border-[#75B4DA]/50"
                       }`}>
                         {item.category.charAt(0).toUpperCase() + item.category.slice(1)}
                       </span>
                     </div>
                     
                     {/* Content */}
-                    <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-blue-600 transition-colors duration-300">
+                    <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-[#75B4DA] transition-colors duration-300">
                       {item.title}
                     </h3>
                     <p className="text-gray-600 mb-6">{item.description}</p>
@@ -283,7 +284,7 @@ export default function EducationPage() {
                           )}
                         </div>
                       ) : (
-                        <div className="text-sm font-medium text-blue-600">
+                        <div className="text-sm font-medium text-[#75B4DA]">
                           New course available!
                         </div>
                       )}
@@ -306,8 +307,8 @@ export default function EducationPage() {
                         rel="noopener noreferrer"
                         className={`flex items-center gap-2 px-5 py-3 rounded-lg font-medium transition-all duration-300 ${
                           item.progress === 100
-                            ? "bg-blue-700 text-white hover:shadow-lg hover:shadow-blue-200"
-                            : "bg-blue-600 text-white hover:shadow-lg hover:shadow-blue-200"
+                            ? "bg-[#75B4DA] text-white hover:shadow-lg hover:shadow-blue-200"
+                            : "bg-[#75B4DA] text-white hover:shadow-lg hover:shadow-blue-200"
                         }`}
                       >
                         {item.type.includes("Video") ? (
@@ -425,7 +426,7 @@ export default function EducationPage() {
           </motion.div> */}
         </div>
       </main>
-
+<CTA/>
       <Footer />
     </div>
   );

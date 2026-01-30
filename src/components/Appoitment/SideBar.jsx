@@ -9,30 +9,30 @@ function SideBar() {
     <div className="space-y-6">
       <Card className=" transition-all duration-300 border  border-white-200 bg-gradient-to-br from-white-100 to-white">
         <CardHeader>
-          <CardTitle className="font-heading">Contact Information</CardTitle>
+          <CardTitle className="font-heading text-[#75B4DA]">Contact Information</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex items-center gap-3">
-            <Phone className="h-5 w-5 text-primary" />
+            <Phone className="h-5 w-5 text-[#75B4DA]" />
             <div>
-              <p className="font-medium">Phone</p>
-              <p className="text-sm text-muted-foreground">+251 911 123 456</p>
+              <p className="font-medium text-[#75B4DA]">Phone</p>
+              <p className="text-sm text-[#75B4DA]">+251 911 123 456</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <Mail className="h-5 w-5 text-primary" />
+            <Mail className="h-5 w-5 text-[#75B4DA]" />
             <div>
-              <p className="font-medium">Email</p>
-              <p className="text-sm text-muted-foreground">
+              <p className="font-medium text-[#75B4DA]">Email</p>
+              <p className="text-sm text-[#75B4DA]">
                 info@orbitoptical.com
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-3">
-            <MapPin className="h-5 w-5 text-primary" />
+          <div className="flex items-center gap-3 text-[#75B4DA]">
+            <MapPin className="h-5 w-5 text-[#75B4DA]" />
             <div>
-              <p className="font-medium">Location</p>
-              <p className="text-sm text-muted-foreground">
+              <p className="font-medium text-[#75B4DA]">Location</p>
+              <p className="text-sm text-[#75B4DA]">
                 Nifas Silk Lafto, Addis Ababa
               </p>
             </div>
@@ -42,43 +42,43 @@ function SideBar() {
 
       <Card className=" transition-all duration-300 border  border-white-200 bg-gradient-to-br from-white-100 to-white">
         <CardHeader>
-          <CardTitle className="font-heading">Office Hours</CardTitle>
+          <CardTitle className="font-heading text-[#75B4DA]">Office Hours</CardTitle>
         </CardHeader>
         <CardContent className="space-y-2">
-          <div className="flex justify-between">
+          <div className="flex justify-between text-[#75B4DA]">
             <span>Monday - Friday</span>
-            <span className="text-muted-foreground">8:00 AM - 6:00 PM</span>
+            <span className="text-[#75B4DA]">8:00 AM - 6:00 PM</span>
           </div>
-          <div className="flex justify-between">
+          <div className="flex justify-between text-[#75B4DA]">
             <span>Saturday</span>
-            <span className="text-muted-foreground">9:00 AM - 4:00 PM</span>
+            <span className="text-[#75B4DA]">9:00 AM - 4:00 PM</span>
           </div>
-          <div className="flex justify-between">
+          <div className="flex justify-between text-[#75B4DA]">
             <span>Sunday</span>
-            <span className="text-muted-foreground">Closed</span>
+            <span className="text-[#75B4DA]">Closed</span>
           </div>
         </CardContent>
       </Card>
 
       <Card className=" transition-all duration-300 border  border-white-200 bg-gradient-to-br from-white-100 to-white">
         <CardHeader>
-          <CardTitle className="font-heading">What to Expect</CardTitle>
+          <CardTitle className="font-heading text-[#75B4DA]">What to Expect</CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
-          <div className="flex items-start gap-2">
-            <CheckCircle className="h-4 w-4 text-secondary mt-0.5" />
+          <div className="flex items-start gap-2 text-[#75B4DA]">
+            <CheckCircle className="h-4 w-4 text-secondary mt-0.5 text-[#75B4DA]" />
             <p className="text-sm">Confirmation call within 24 hours</p>
           </div>
-          <div className="flex items-start gap-2">
-            <CheckCircle className="h-4 w-4 text-secondary mt-0.5" />
+          <div className="flex items-start gap-2 text-[#75B4DA]">
+            <CheckCircle className="h-4 w-4 text-secondary mt-0.5 text-[#75B4DA]" />
             <p className="text-sm">Bring valid ID and insurance card</p>
           </div>
-          <div className="flex items-start gap-2">
-            <CheckCircle className="h-4 w-4 text-secondary mt-0.5" />
+          <div className="flex items-start gap-2 text-[#75B4DA]">
+            <CheckCircle className="h-4 w-4 text-secondary mt-0.5 text-[#75B4DA]" />
             <p className="text-sm">Arrive 15 minutes early for paperwork</p>
           </div>
-          <div className="flex items-start gap-2">
-            <CheckCircle className="h-4 w-4 text-secondary mt-0.5" />
+          <div className="flex items-start gap-2 text-[#75B4DA]">
+            <CheckCircle className="h-4 w-4 text-secondary mt-0.5 text-[#75B4DA]" />
             <p className="text-sm">
               Comprehensive examination and consultation
             </p>
@@ -86,16 +86,16 @@ function SideBar() {
         </CardContent>
       </Card>
 
-      <Card className="bg-primary text-primary-foreground">
+      <Card className="bg-[#EBEBEB] text-[#75B4DA]">
         <CardHeader>
           <CardTitle className="font-heading">Emergency?</CardTitle>
         </CardHeader>
         <CardContent>
-          <p className="text-sm text-primary-foreground/90 mb-3">
+          <p className="text-sm text-[#75B4DA] mb-3">
             For urgent eye emergencies, call us immediately or visit the nearest
             emergency room.
           </p>
-          <Button size="sm" className="w-full bg-white text-primary hover:bg-white/90">
+          <Button size="sm" className="w-full bg-white text-[#75B4DA] hover:bg-white/90">
             Call Emergency Line
           </Button>
         </CardContent>

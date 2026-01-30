@@ -19,7 +19,7 @@ function CTA() {
       {/* Gradient Overlay */}
       <div 
         className="absolute inset-0"
-        style={{ background: 'linear-gradient(to bottom, rgba(74, 159, 245, 0.9) 0%, rgba(45, 140, 240, 0.92) 40%, rgba(26, 115, 232, 0.95) 100%)' }}
+        style={{ background: 'linear-gradient(to bottom, rgba(117, 180, 218, 0.85) 0%, rgba(90, 155, 195, 0.9) 50%, rgba(65, 130, 170, 0.95) 100%)' }}
       />
 
       {/* Content */}
@@ -35,14 +35,14 @@ function CTA() {
           <Button
             asChild
             size="lg"
-            className="text-[#1A73E8] bg-white hover:bg-[#1A73E8] hover:text-white transition-colors font-semibold"
+            className="text-[#75B4DA] bg-white hover:bg-[#75B4DA] hover:text-white transition-colors font-semibold"
           >
             <Link to="/appointment">Book Appointment</Link>
           </Button>
           <Button
             size="lg"
             variant="outline"
-            className="border-2 border-[#1A73E8] text-[#1A73E8] hover:bg-[#1A73E8] hover:text-white transition-colors font-semibold"
+            className="border-2 border-white text-[#75B4DA] hover:bg-white hover:text-[#75B4DA] transition-colors font-semibold"
           >
             Call +251 911 123 456
           </Button>

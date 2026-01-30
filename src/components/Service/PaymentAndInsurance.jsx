@@ -121,7 +121,7 @@ function PaymentAndInsurance() {
 
   // Icon mapping
   const getIcon = (title) => {
-    const iconClass = "h-14 w-14 text-primary";
+    const iconClass = "h-14 w-14 text-[#75B4DA]";
     switch (title.toLowerCase()) {
       case "payment methods":
         return <CreditCard className={iconClass} />;
@@ -163,7 +163,7 @@ function PaymentAndInsurance() {
   return (
     <section className="relative py-20 lg:py-28 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#DFF3FF] via-blue-50 to-[#E6F7FF]"></div>
+      <div className="absolute inset-0 bg-[#EBEBEB]"></div>
       
       {/* Floating Bubbles */}
       <div className="absolute top-10 left-[5%] animate-float">
@@ -218,7 +218,7 @@ function PaymentAndInsurance() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
+          <h2 className="text-4xl lg:text-6xl font-bold bg-clip-text text-transparent bg-[#75B4DA]">
             Payment & Insurance Made Easy
           </h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -243,15 +243,15 @@ function PaymentAndInsurance() {
                 className="group relative overflow-hidden border border-border/50 bg-card/90 backdrop-blur-sm shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
               >
                 {/* Gradient Icon Background */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-primary/10 to-transparent rounded-bl-full opacity-70"></div>
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#75B4DA]/10 rounded-bl-full opacity-70"></div>
 
                 <CardHeader className="relative z-10 pb-4">
                   <div className="flex justify-center mb-4">
-                    <div className="p-4 bg-primary/10 backdrop-blur-sm rounded-2xl border border-primary/20 group-hover:bg-primary/15 transition-colors">
+                    <div className="p-4 bg-[#75B4DA]/10 backdrop-blur-sm rounded-2xl border border-[#75B4DA]/20 group-hover:bg-[#75B4DA]/15 transition-colors">
                       {getIcon(item.title)}
                     </div>
                   </div>
-                  <CardTitle className="text-xl font-bold text-center text-foreground">
+                  <CardTitle className="text-xl font-bold text-center text-[#75B4DA]">
                     {item.title}
                   </CardTitle>
                 </CardHeader>
@@ -260,21 +260,21 @@ function PaymentAndInsurance() {
                   {items.length > 0 ? (
                     <ul className="space-y-2.5">
                       {items.map((line, idx) => (
-                        <li key={idx} className="flex items-start gap-2.5 text-sm text-foreground/80">
-                          <CheckCircle2 className="h-4.5 w-4.5 text-primary mt-0.5 flex-shrink-0" />
+                        <li key={idx} className="flex items-start gap-2.5 text-sm text-[#75B4DA]/80">
+                          <CheckCircle2 className="h-4.5 w-4.5 text-[#75B4DA] mt-0.5 flex-shrink-0" />
                           <span>{parse(line)}</span>
                         </li>
                       ))}
                     </ul>
                   ) : (
-                    <p className="text-sm text-muted-foreground text-center italic">
+                    <p className="text-sm text-[#75B4DA] text-center italic">
                       Details coming soon
                     </p>
                   )}
                 </CardContent>
 
                 {/* Hover Glow Border */}
-                <div className="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-primary/30 transition-colors pointer-events-none" />
+                <div className="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-[#75B4DA]/30 transition-colors pointer-events-none" />
               </Card>
             );
           })}

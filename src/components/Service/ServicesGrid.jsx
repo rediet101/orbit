@@ -30,7 +30,7 @@ function ServicesGrid() {
   if (loading) {
     return (
       <section className="relative py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#DFF3FF] via-blue-50 to-[#E6F7FF]"></div>
+        <div className="absolute inset-0 bg-[#EBEBEB]"></div>
         <div className="relative">
           <LoadingState message="Loading services..." />
         </div>
@@ -41,7 +41,7 @@ function ServicesGrid() {
   if (error) {
     return (
       <section className="relative py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#DFF3FF] via-blue-50 to-[#E6F7FF]"></div>
+        <div className="absolute inset-0 bg-[#EBEBEB]"></div>
         <div className="relative">
           <EmptyState message="Unable to load services. Please try again later." />
         </div>
@@ -52,7 +52,7 @@ function ServicesGrid() {
   if (services.length === 0) {
     return (
       <section className="relative py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#DFF3FF] via-blue-50 to-[#E6F7FF]"></div>
+        <div className="absolute inset-0 bg-[#EBEBEB]"></div>
         <div className="relative">
           <EmptyState message="No services available yet. Check back soon for our offerings!" />
         </div>
@@ -63,7 +63,7 @@ function ServicesGrid() {
   return (
     <section className="relative py-20 lg:py-28 overflow-hidden">
       {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#DFF3FF] via-blue-50 to-[#E6F7FF]"></div>
+      <div className="absolute inset-0 bg-[#EBEBEB]"></div>
 
       {/* Floating Bubbles */}
       <div className="absolute top-10 left-[5%] animate-float">
@@ -118,7 +118,7 @@ function ServicesGrid() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
+          <h2 className="text-4xl lg:text-6xl font-bold bg-clip-text text-transparent bg-[#75B4DA]">
             Our Comprehensive Services
           </h2>
           <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -152,9 +152,9 @@ function ServicesGrid() {
                     {/* Category Badge */}
                     <div className="flex items-center gap-2 mb-4">
                       <div className="p-2 bg-primary/10 rounded-lg">
-                        <Eye className="h-5 w-5 text-primary" />
+                        <Eye className="h-5 w-5 text-[#75B4DA]" />
                       </div>
-                      <span className="text-sm font-medium text-primary/80 bg-primary/5 px-3 py-1 rounded-full">
+                      <span className="text-sm font-medium text-[#75B4DA] bg-primary/5 px-3 py-1 rounded-full">
                         {service.category || "Service Catagory"}
                       </span>
                     </div>
@@ -169,7 +169,7 @@ function ServicesGrid() {
                       <div className="flex flex-col gap-2 mb-6">
                         {specs.slice(0, 6).map((line, i) => (
                           <div key={i} className="flex items-start gap-2 text-sm text-gray-700">
-                            <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                            <CheckCircle2 className="h-5 w-5 text-[#75B4DA] flex-shrink-0 mt-0.5" />
                             <span>{parse(line.trim())}</span>
                           </div>
                         ))}

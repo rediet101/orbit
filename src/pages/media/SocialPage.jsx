@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer";
 import MediaHero from "@/components/Media/MediaHero";
 import { Facebook, Instagram, Twitter, Linkedin, Youtube, ExternalLink, Play, Heart, MessageCircle, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import CTA from "@/components/CTA";
 
 export default function SocialPage() {
   // Sample social media posts/content
@@ -108,7 +109,7 @@ export default function SocialPage() {
       
       <section className="relative py-16 overflow-hidden">
         {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#DFF3FF] via-blue-50 to-[#E6F7FF]"></div>
+        <div className="absolute inset-0 bg-[#EBEBEB]"></div>
         
         {/* Floating Bubbles */}
         <div className="absolute top-10 left-[5%] animate-float"><div className="w-4 h-4 rounded-full bg-blue-400/20"></div></div>
@@ -137,12 +138,12 @@ export default function SocialPage() {
               >
                 {/* Post Header */}
                 <div className="p-4 flex items-center gap-3 border-b border-blue-50">
-                  <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${post.platformColor} flex items-center justify-center`}>
+                  <div className={`w-10 h-10 rounded-full bg-[#75B4DA] flex items-center justify-center`}>
                     <post.platformIcon className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <p className="font-semibold text-blue-900">{post.platform}</p>
-                    <p className="text-xs text-blue-600/60">{post.date}</p>
+                    <p className="font-semibold text-[#75B4DA]">{post.platform}</p>
+                    <p className="text-xs text-[#75B4DA]">{post.date}</p>
                   </div>
                 </div>
 
@@ -156,7 +157,7 @@ export default function SocialPage() {
                   {post.type === "video" && (
                     <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
                       <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center">
-                        <Play className="w-8 h-8 text-blue-600 ml-1" />
+                        <Play className="w-8 h-8 text-[#75B4DA] ml-1" />
                       </div>
                       {post.duration && (
                         <span className="absolute bottom-3 right-3 bg-black/80 text-white text-xs px-2 py-1 rounded">
@@ -169,12 +170,12 @@ export default function SocialPage() {
 
                 {/* Post Content */}
                 <div className="p-4">
-                  <p className="text-blue-800 text-sm line-clamp-2 mb-3">
+                  <p className="text-[#75B4DA] text-sm line-clamp-2 mb-3">
                     {post.caption}
                   </p>
                   
                   {/* Engagement Stats */}
-                  <div className="flex items-center gap-4 text-blue-600/70 text-sm">
+                  <div className="flex items-center gap-4 text-[#75B4DA] text-sm">
                     {post.likes && (
                       <span className="flex items-center gap-1">
                         <Heart className="w-4 h-4" />
@@ -200,7 +201,7 @@ export default function SocialPage() {
                 <div className="px-4 pb-4">
                   <Button 
                     variant="outline" 
-                    className="w-full border-blue-200 text-blue-600 hover:bg-blue-50 hover:text-blue-700"
+                    className="w-full border-[#75B4DA] text-[#75B4DA] hover:bg-[#75B4DA] hover:text-white"
                   >
                     View on {post.platform}
                     <ExternalLink className="w-4 h-4 ml-2" />
@@ -230,7 +231,7 @@ export default function SocialPage() {
           .animate-float-slow { animation: float-slow 10s ease-in-out infinite 0.5s; }
         `}</style>
       </section>
-
+<CTA/>
       <Footer />
     </div>
   );

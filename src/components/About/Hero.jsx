@@ -42,7 +42,7 @@ function Hero() {
       <div className="absolute inset-0 bg-black/50" />
 
       {/* Optional: Subtle Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-secondary/20" />
+       <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-secondary/20" />
 
       {/* Content */}
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">

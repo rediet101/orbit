@@ -36,7 +36,7 @@ function TestimonialGrid() {
 
   if (loading) {
     return (
-      <section className="bg-[#DFF3FF]">
+      <section className="bg-[#75B4DA]/10">
         <LoadingState message="Loading testimonials..." />
       </section>
     );
@@ -44,7 +44,7 @@ function TestimonialGrid() {
 
   if (error) {
     return (
-      <section className="bg-[#DFF3FF]">
+      <section className="bg-[#75B4DA]/10">
         <EmptyState message="Unable to load testimonials. Please try again later." />
       </section>
     );
@@ -52,7 +52,7 @@ function TestimonialGrid() {
 
   if (!testimonials.length) {
     return (
-      <section className="bg-[#DFF3FF]">
+      <section className="bg-[#75B4DA]/10">
         <EmptyState message="No testimonials yet. Our happy clients' stories are coming soon!" />
       </section>
     );
@@ -61,7 +61,7 @@ function TestimonialGrid() {
   return (
     <section className="relative py-20 lg:py-28 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#DFF3FF] via-blue-50 to-[#E6F7FF]"></div>
+      <div className="absolute inset-0 bg-[#EBEBEB]"></div>
       
       {/* Floating Bubbles */}
       <div className="absolute top-10 left-[5%] animate-float">
@@ -98,10 +98,10 @@ function TestimonialGrid() {
               style={{ animationDelay: `${index * 150}ms` }}
             >
               {/* Card with blue border accent */}
-              <div className="relative bg-white rounded-xl pt-12 pb-8 px-8 shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:scale-[1.02] border-l-4 border-t-4  border-blue-600 group">
+              <div className="relative bg-white rounded-xl pt-12 pb-8 px-8 shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:scale-[1.02] border-l-4 border-t-4  border-[#75B4DA] group">
                 
                 {/* Large Quote Icon - positioned higher above the card */}
-                <div className="absolute -top-10 right-6 text-gray-400 text-8xl font-serif leading-none select-none transition-all duration-300 group-hover:text-blue-300 group-hover:scale-110">
+                <div className="absolute -top-10 right-6 text-gray-400 text-8xl font-serif leading-none select-none transition-all duration-300 group-hover:text-[#75B4DA] group-hover:scale-110">
                   "
                 </div>
 
@@ -124,7 +124,7 @@ function TestimonialGrid() {
                 <div className="space-y-4">
                   {/* Name and Title */}
                   <div>
-                    <h3 className="font-bold text-gray-900 text-lg transition-colors duration-300 group-hover:text-blue-800">{t.name}</h3>
+                    <h3 className="font-bold text-gray-900 text-lg transition-colors duration-300 group-hover:text-[#75B4DA]">{t.name}</h3>
                     {t.age && (
                       <p className="text-gray-500 text-sm">Age: {t.age}</p>
                     )}

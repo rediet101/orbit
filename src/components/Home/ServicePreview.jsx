@@ -16,7 +16,7 @@ const PrescriptionGlassesIcon = () => (
       cx="18"
       cy="32"
       r="10"
-      stroke="#2563EB"
+      stroke="currentColor"
       strokeWidth="2"
       fill="none"
     />
@@ -24,22 +24,22 @@ const PrescriptionGlassesIcon = () => (
       cx="46"
       cy="32"
       r="10"
-      stroke="#2563EB"
+      stroke="currentColor"
       strokeWidth="2"
       fill="none"
     />
-    <path d="M28 32 H36" stroke="#2563EB" strokeWidth="2" />
-    <path d="M8 32 H8" stroke="#2563EB" strokeWidth="2" />
-    <path d="M56 32 H56" stroke="#2563EB" strokeWidth="2" />
+    <path d="M28 32 H36" stroke="currentColor" strokeWidth="2" />
+    <path d="M8 32 H8" stroke="currentColor" strokeWidth="2" />
+    <path d="M56 32 H56" stroke="currentColor" strokeWidth="2" />
     <path
       d="M8 28 Q4 28 4 32 Q4 36 8 36"
-      stroke="#2563EB"
+      stroke="currentColor"
       strokeWidth="2"
       fill="none"
     />
     <path
       d="M56 28 Q60 28 60 32 Q60 36 56 36"
-      stroke="#2563EB"
+      stroke="currentColor"
       strokeWidth="2"
       fill="none"
     />
@@ -58,7 +58,7 @@ const ContactLensIcon = () => (
       cy="32"
       rx="20"
       ry="12"
-      stroke="#2563EB"
+      stroke="currentColor"
       strokeWidth="2"
       fill="none"
     />
@@ -67,13 +67,13 @@ const ContactLensIcon = () => (
       cy="32"
       rx="12"
       ry="7"
-      stroke="#2563EB"
+      stroke="currentColor"
       strokeWidth="1.5"
       fill="none"
     />
     <path
       d="M20 28 Q32 20 44 28"
-      stroke="#2563EB"
+      stroke="currentColor"
       strokeWidth="1.5"
       fill="none"
     />
@@ -89,7 +89,7 @@ const EyeCareIcon = () => (
   >
     <path
       d="M32 16 C18 16 8 32 8 32 C8 32 18 48 32 48 C46 48 56 32 56 32 C56 32 46 16 32 16 Z"
-      stroke="#2563EB"
+      stroke="currentColor"
       strokeWidth="2"
       fill="none"
     />
@@ -97,13 +97,13 @@ const EyeCareIcon = () => (
       cx="32"
       cy="32"
       r="8"
-      stroke="#2563EB"
+      stroke="currentColor"
       strokeWidth="2"
       fill="none"
     />
-    <circle cx="32" cy="32" r="3" fill="#2563EB" />
-    <path d="M32 8 L32 12" stroke="#2563EB" strokeWidth="2" />
-    <path d="M32 52 L32 56" stroke="#2563EB" strokeWidth="2" />
+    <circle cx="32" cy="32" r="3" fill="currentColor" />
+    <path d="M32 8 L32 12" stroke="currentColor" strokeWidth="2" />
+    <path d="M32 52 L32 56" stroke="currentColor" strokeWidth="2" />
   </svg>
 );
 
@@ -120,17 +120,17 @@ const VisionCheckIcon = () => (
       width="32"
       height="40"
       rx="2"
-      stroke="#2563EB"
+      stroke="currentColor"
       strokeWidth="2"
       fill="none"
     />
-    <text x="24" y="28" fill="#2563EB" fontSize="10" fontWeight="bold">
+    <text x="24" y="28" fill="currentColor" fontSize="10" fontWeight="bold">
       A O F
     </text>
-    <text x="24" y="38" fill="#2563EB" fontSize="8">
+    <text x="24" y="38" fill="currentColor" fontSize="8">
       P E Z
     </text>
-    <text x="24" y="46" fill="#2563EB" fontSize="6">
+    <text x="24" y="46" fill="currentColor" fontSize="6">
       L O C D
     </text>
   </svg>
@@ -193,7 +193,7 @@ function ServicePreview() {
   };
 
   return (
-    <section id="services" className="py-16 lg:py-20 bg-[#DFF3FF]">
+    <section id="services" className="py-16 lg:py-20 bg-[#EBEBEB]">
       <div className=" max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Services Icons Row */}
 
@@ -222,10 +222,10 @@ function ServicePreview() {
 
           {/* Right: Content */}
           <div className="lg:pl-8 mt-10">
-            <span className="text-blue-500 font-medium text-sm uppercase tracking-wide">
+            <span className="text-[#75B4DA] font-medium text-sm uppercase tracking-wide">
               About Us
             </span>
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-800 mt-2 mb-6">
+            <h2 className="text-3xl lg:text-4xl font-bold text-[#75B4DA] mt-2 mb-6">
               Style Yourself With The Best Lens
             </h2>
             <p className="text-gray-600 leading-relaxed mb-8">
@@ -238,7 +238,7 @@ function ServicePreview() {
               environment.
             </p>
             <Link to="/about">
-              <Button className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-md font-medium transition-colors duration-300">
+              <Button className="bg-[#75B4DA] hover:bg-[#75B4DA]/80 text-white px-8 py-3 rounded-md font-medium transition-colors duration-300">
                 Learn More
               </Button>
             </Link>
@@ -247,7 +247,7 @@ function ServicePreview() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20 mt-10">
           {iconServices.map((service, index) => (
             <div key={index} className="text-center group">
-              <div className="flex justify-center mb-4 transition-transform duration-300 group-hover:scale-110">
+              <div className="flex justify-center mb-4 transition-transform duration-300 group-hover:scale-110 text-[#75B4DA]">
                 <service.icon />
               </div>
               <h3 className="text-lg font-semibold text-gray-800 mb-2">
@@ -268,8 +268,8 @@ function ServicePreview() {
               <div className="mb-6">
                 <img src={logo} alt="Orbit Logo" className="h-24 w-auto mb-6 mx-auto" />
                 <h2 className="text-4xl lg:text-6xl font-montserrat font-bold mb-6">
-                  <span className="text-blue-500">Our </span>
-                  <span className="text-[#10b981] italic">Services</span>
+                  <span className="text-black">Our </span>
+                  <span className="text-[#75B4DA] italic">Services</span>
                 </h2>
                 
                 <p className="text-gray-600 leading-relaxed text-sm font-open-sans">
@@ -281,14 +281,14 @@ function ServicePreview() {
               {/* Decorative dot and line - positioned at right edge to connect to divider */}
               <div className="hidden lg:flex items-center absolute top-1/2 right-0 transform translate-x-full -translate-y-1/2">
                 {/* <div className="w-10 h-0.5 bg-gray-300"></div> */}
-                <div className="w-4 h-4 bg-blue-500 rounded-full -ml-2"></div>
-                <div className="w-10.5 h-0.5 bg-blue-300"></div>
+                <div className="w-4 h-4 bg-[#75B4DA] rounded-full -ml-2"></div>
+                <div className="w-10.5 h-0.5 bg-[#75B4DA]"></div>
               </div>
             </div>
 
             {/* Vertical Divider Line */}
             <div className="hidden lg:flex lg:col-span-1 justify-center">
-              <div className="w-px h-full min-h-[600px] bg-blue-300"></div>
+              <div className="w-px h-full min-h-[600px] bg-[#75B4DA]"></div>
             </div>
 
             {/* Right Side - 2x2 Service Grid */}
@@ -342,14 +342,14 @@ function ServicePreview() {
                         />
                         {/* New Badge */}
                         <div className="absolute bottom-0 right-0">
-                          <div className="bg-[#10b981] text-white text-xs font-bold px-4 py-1.5">
+                          <div className="bg-[#75B4DA] text-white text-xs font-bold px-4 py-1.5">
                             New
                           </div>
                         </div>
                       </div>
                       
                       {/* Title */}
-                      <h3 className="text-xl font-montserrat font-bold text-blue-500 mb-2">
+                      <h3 className="text-xl font-montserrat font-bold text-[#75B4DA] mb-2">
                         {service.title}
                       </h3>
                       
@@ -363,7 +363,7 @@ function ServicePreview() {
                       {/* Read More Link */}
                       <Link
                         to="/services"
-                        className="text-[#1a73e8] text-sm font-semibold uppercase tracking-wide hover:text-[#10b981] transition-colors inline-flex items-center gap-1"
+                        className="text-[#75B4DA] text-sm font-semibold uppercase tracking-wide hover:text-[#10b981] transition-colors inline-flex items-center gap-1"
                       >
                         Read More
                         <span>›</span>

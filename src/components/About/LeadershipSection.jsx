@@ -21,7 +21,7 @@ function LeadershipSection({ data }) {
   return (
     <section className="relative py-20 lg:py-32 overflow-hidden">
       {/* Background - Same as OurStory */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#DFF3FF] via-blue-50 to-[#E6F7FF]"></div>
+      <div className="absolute inset-0 bg-[#EBEBEB]"></div>
       
       {/* Floating Bubbles */}
       <div className="absolute top-10 left-[5%] animate-float">
@@ -70,16 +70,16 @@ function LeadershipSection({ data }) {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-blue-600 to-cyan-600">
+          <h2 className="text-4xl lg:text-6xl font-bold mb-4">
+            <span className="bg-clip-text text-transparent bg-[#75B4DA]">
               Meet Our
             </span>
             <br />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-700">
+            <span className="bg-clip-text text-transparent bg-[#75B4DA]">
               Expert Team
             </span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-primary to-cyan-500 rounded-full mx-auto mt-4"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-[#75B4DA] to-[#75B4DA] rounded-full mx-auto mt-4"></div>
           <p className="mt-6 text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Our dedicated professionals bring years of experience and passion to deliver the highest standard of eye care.
           </p>
@@ -132,7 +132,7 @@ function LeadershipSection({ data }) {
                         <h3 className="text-2xl lg:text-3xl font-bold text-gray-900">
                           {leader.name}
                         </h3>
-                        <p className="text-lg font-medium text-primary mt-1">
+                        <p className="text-lg font-medium text-[#75B4DA] mt-1">
                           {leader.Job_title}
                         </p>
                       </div>
@@ -146,7 +146,7 @@ function LeadershipSection({ data }) {
                         {leader.email && (
                           <a
                             href={`mailto:${leader.email}`}
-                            className="p-2.5 bg-gradient-to-br from-primary/10 to-cyan-500/10 backdrop-blur-sm rounded-xl hover:from-primary/20 hover:to-cyan-500/20 transition-all duration-300 group/icon"
+                            className="p-2.5 bg-backdrop-blur-sm rounded-xl hover:from-primary/20 hover:to-cyan-500/20 transition-all duration-300 group/icon"
                             title="Email"
                           >
                             <Mail className="h-5 w-5 text-primary group-hover/icon:scale-110 transition-transform" />

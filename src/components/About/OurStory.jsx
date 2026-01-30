@@ -20,7 +20,7 @@ function OurStory({ data }) {
   // If no data provided, show empty state with sparkle icon
   if (!story) {
     return (
-      <section className="py-20 bg-gradient-to-br from-[#DFF3FF] via-blue-50 to-[#E6F7FF]">
+      <section className="py-20 bg-[#EBEBEB]">
         <EmptyState message="No story available yet. Our journey begins soon!" />
       </section>
     );
@@ -31,7 +31,7 @@ function OurStory({ data }) {
   return (
     <section className="relative py-20 lg:py-32 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#DFF3FF] via-blue-50 to-[#E6F7FF]"></div>
+      <div className="absolute inset-0 bg-[#EBEBEB]"></div>
       
       {/* Many Floating Bubbles */}
       <div className="absolute top-10 left-[5%] animate-float">

@@ -5,7 +5,7 @@ function Trust() {
   return (
     <section className="relative py-20 lg:py-28 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#DFF3FF] via-blue-50 to-[#E6F7FF]"></div>
+      <div className="absolute inset-0 bg-[#EBEBEB]"></div>
       
       {/* Floating Bubbles */}
       <div className="absolute top-10 left-[5%] animate-float">
@@ -59,7 +59,7 @@ function Trust() {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center space-y-4 mb-16">
-          <h2 className="font-heading font-bold text-3xl lg:text-4xl text-balance text-foreground">
+          <h2 className="font-heading font-bold text-3xl lg:text-5xl text-balance text-[#75B4DA]">
             Why Patients Choose Us
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
@@ -112,11 +112,11 @@ function Trust() {
               className="group flex items-start gap-4 p-6 rounded-2xl bg-card/80 backdrop-blur-sm border border-border/50 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
             >
               <div className="p-3 bg-primary/10 rounded-xl border border-primary/20 group-hover:bg-primary/15 transition-colors">
-                <feature.icon className="h-6 w-6 text-primary flex-shrink-0" />
+                <feature.icon className="h-6 w-6 text-[#75B4DA] flex-shrink-0" />
               </div>
               <div>
-                <h3 className="font-semibold mb-2 text-foreground">{feature.title}</h3>
-                <p className="text-sm text-muted-foreground">
+                <h3 className="font-semibold mb-2 text-[#75B4DA]">{feature.title}</h3>
+                <p className="text-sm text-[#75B4DA]">
                   {feature.description}
                 </p>
               </div>

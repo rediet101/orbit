@@ -13,7 +13,7 @@ export default function ContactPage() {
       
       <section className="relative py-20 overflow-hidden">
         {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#DFF3FF] via-blue-50 to-[#E6F7FF]"></div>
+        <div className="absolute inset-0 bg-[#EBEBEB]"></div>
         
         {/* Floating Bubbles */}
         <div className="absolute top-10 left-[5%] animate-float">

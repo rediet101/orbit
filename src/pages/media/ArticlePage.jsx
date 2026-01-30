@@ -5,6 +5,7 @@ import { Calendar, User, ArrowRight, Eye, Clock, TrendingUp } from "lucide-react
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import CTA from "@/components/CTA";
 
 export default function ArticlePage() {
   const [isVisible, setIsVisible] = useState(false);
@@ -95,7 +96,7 @@ export default function ArticlePage() {
       
       <section className="relative py-16 lg:py-20 overflow-hidden">
         {/* Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#DFF3FF] via-blue-50 to-[#E6F7FF]"></div>
+        <div className="absolute inset-0 bg-[#EBEBEB]"></div>
         
         {/* Floating Bubbles */}
         <div className="absolute top-10 left-[5%] animate-float">
@@ -166,9 +167,9 @@ export default function ArticlePage() {
                 className="group relative"
               >
                 {/* Blue Gradient Border Effect */}
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-400 to-blue-600 rounded-2xl blur opacity-0 group-hover:opacity-70 transition duration-500 group-hover:duration-200"></div>
+                <div className="absolute -inset-0.5 bg-[#75B4DA] rounded-2xl blur opacity-0 group-hover:opacity-70 transition duration-500 group-hover:duration-200"></div>
                 
-                <div className="relative bg-white rounded-2xl shadow-xl shadow-blue-100 overflow-hidden border border-blue-100">
+                <div className="relative bg-white rounded-2xl shadow-xl shadow-blue-100 overflow-hidden border border-[#75B4DA]">
                   {/* Image Container with Gradient Overlay */}
                   <div className="h-56 overflow-hidden relative">
                     <img
@@ -176,11 +177,11 @@ export default function ArticlePage() {
                       alt={article.title}
                       className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-blue-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    {/* <div className="absolute inset-0 bg-gradient-to-t from-[#75B4DA]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div> */}
                     
                     {/* Category Badge */}
                     <div className="absolute top-4 left-4">
-                      <span className="bg-white/90 backdrop-blur-sm text-blue-600 px-3 py-1 rounded-full text-xs font-semibold">
+                      <span className="bg-white/90 backdrop-blur-sm text-[#75B4DA] px-3 py-1 rounded-full text-xs font-semibold">
                         {article.category}
                       </span>
                     </div>
@@ -188,18 +189,18 @@ export default function ArticlePage() {
                   
                   {/* Content */}
                   <div className="p-6">
-                    <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
+                    <div className="flex items-center gap-4 text-sm text-[#75B4DA] mb-4">
                       <span className="flex items-center gap-1">
-                        <User className="w-4 h-4 text-blue-500" />
+                        <User className="w-4 h-4 text-[#75B4DA]" />
                         <span className="font-medium">{article.author}</span>
                       </span>
                       <span className="flex items-center gap-1">
-                        <Calendar className="w-4 h-4 text-blue-500" />
+                        <Calendar className="w-4 h-4 text-[#75B4DA]" />
                         {article.date}
                       </span>
                     </div>
                     
-                    <h2 className="text-2xl font-bold text-gray-800 mb-4 group-hover:text-blue-600 transition-colors duration-300 line-clamp-2">
+                    <h2 className="text-2xl font-bold text-gray-800 mb-4 group-hover:text-[#75B4DA] transition-colors duration-300 line-clamp-2">
                       {article.title}
                     </h2>
                     
@@ -211,7 +212,7 @@ export default function ArticlePage() {
                     <div className="flex items-center justify-between pt-4 border-t border-blue-100">
                       <div className="flex items-center gap-4 text-sm text-gray-500">
                         <span className="flex items-center gap-1">
-                          <Clock className="w-4 h-4 text-blue-500" />
+                          <Clock className="w-4 h-4 text-[#75B4DA]" />
                           {article.readTime}
                         </span>
                         {/* <span className="flex items-center gap-1">
@@ -222,7 +223,7 @@ export default function ArticlePage() {
                       
                       <Link 
                         to={`/media/article/${article.id}`}
-                        className="flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-full font-medium hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-200 transform hover:-translate-y-0.5 transition-all duration-300 group/btn"
+                        className="flex items-center gap-2 bg-[#75B4DA] text-white px-6 py-3 rounded-full font-medium hover:bg-[#75B4DA] hover:shadow-lg hover:shadow-blue-200 transform hover:-translate-y-0.5 transition-all duration-300 group/btn"
                       >
                         <span>Read Article</span>
                         <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
@@ -304,7 +305,7 @@ export default function ArticlePage() {
           }
         `}</style>
       </section>
-
+      <CTA />
       <Footer />
     </div>
   );

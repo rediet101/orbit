@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Mail, Phone, UserCheck, Clock, Calendar, X } from "lucide-react";
+import logo from "../../assets/Logo/Logo1-01.svg";
 
 interface Doctor {
   id: string;
@@ -142,63 +143,79 @@ const Doctorlist = () => {
   const activeDoctors = doctors;
 
   return (
-    <div className="py-16 bg-[#DFF3FF]">
+    <div className="py-16 bg-[#EBEBEB]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4 relative inline-block">
-            Our Medical Team
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-1 "></div>
-          </h2>
-          <p className="text-gray-600 mt-6 max-w-2xl mx-auto">
-            Meet our experienced and dedicated medical professionals committed to providing you with the best eye care
-          </p>
-        </div>
-
-        {/* Doctors Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {activeDoctors.map((doctor) => (
-            <div
-              key={doctor.id}
-              className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group"
-            >
-              {/* Doctor Avatar */}
-              <div className="h-48 bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center">
-                <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center">
-                  <span className="text-4xl font-bold text-blue-600">
-                    {doctor.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
-                  </span>
-                </div>
-              </div>
-
-              {/* Doctor Info */}
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-blue-600 transition-colors">
-                  {doctor.name}
-                </h3>
-
-                <div className="space-y-2 mb-4">
-                  <div className="flex items-center gap-2 text-gray-600 text-sm">
-                    <Mail className="w-4 h-4 text-blue-500" />
-                    <span className="truncate">{doctor.email}</span>
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-0 items-start">
+          {/* Left Side - 2x2 Doctor Grid */}
+          <div className="lg:col-span-7 lg:pr-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10">
+              {activeDoctors.map((doctor) => (
+                <div key={doctor.id} className="group">
+                  {/* Image with New Badge */}
+                  <div className="relative mb-4 overflow-hidden rounded-lg">
+                    <div className="w-full h-40 bg-[#75B4DA] flex items-center justify-center">
+                      <div className="w-32 h-32 bg-[#EBEBEB] rounded-full flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+                        <span className="text-5xl font-bold text-black/40">
+                          {doctor.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
+                        </span>
+                      </div>
+                    </div>
+                    {/* New Badge */}
+                    <div className="absolute bottom-0 right-0">
+                      <div className="bg-[#EBEBEB] text-black text-xs font-bold px-4 py-1.5">
+                        New
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2 text-gray-600 text-sm">
-                    <Phone className="w-4 h-4 text-blue-500" />
-                    <span>{doctor.phone}</span>
-                  </div>
+                  
+                  {/* Title */}
+                  <h3 className="text-xl font-montserrat font-bold text-black mb-2">
+                    {doctor.name}
+                  </h3>
+                  
+                  {/* Description */}
+                  <p className="text-[#213D66]/60 text-sm leading-relaxed mb-3 line-clamp-3 font-open-sans">
+                    Experienced medical professional providing comprehensive healthcare services with dedication and expertise.
+                  </p>
+                  
+                  {/* Check Availability Link */}
+                  <button
+                    onClick={() => handleCheckAvailability(doctor)}
+                    className="text-[#75B4DA] text-sm font-semibold uppercase tracking-wide hover:text-[#75B4DA]/80 transition-colors inline-flex items-center gap-1"
+                  >
+                    Check Availability
+                    <span>›</span>
+                  </button>
                 </div>
-
-                {/* Check Availability Button */}
-                <button
-                  onClick={() => handleCheckAvailability(doctor)}
-                  className="mt-4 w-full flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-300 text-sm font-medium shadow-md hover:shadow-lg"
-                >
-                  <Clock className="w-4 h-4" />
-                  Check Availability
-                </button>
-              </div>
+              ))}
             </div>
-          ))}
+          </div>
+
+          {/* Vertical Divider Line */}
+          <div className="hidden lg:flex lg:col-span-1 justify-center">
+            <div className="w-px h-full min-h-[1300px] bg-[#75B4DA]"></div>
+          </div>
+
+          {/* Right Side - Title and Description */}
+          <div className="lg:col-span-4 lg:pl-8 relative flex flex-col items-center text-center ">
+            <div className="mb-6 sticky top-0">
+              <img src={logo} alt="Orbit Logo" className="h-26 w-auto mb-6 mx-auto" />
+              <h2 className="text-4xl lg:text-6xl font-montserrat font-bold mb-6">
+                <span className="text-black">Our </span>
+                <span className="text-[#75B4DA] italic">Medical Team</span>
+              </h2>
+              
+              <p className="text-gray-600 leading-relaxed text-sm font-open-sans">
+                At orbit, we provide comprehensive healthcare that covers a wide range of specialties and services to meet the diverse needs of our patients.
+              </p>
+            </div>
+            
+            {/* Decorative dot and line - positioned at left edge to connect to divider */}
+            <div className="hidden lg:flex items-center absolute top-1/2 left-0 transform -translate-x-full -translate-y-1/2">
+              <div className="w-10.5 h-0.5 bg-[#75B4DA]"></div>
+              <div className="w-4 h-4 bg-[#75B4DA] rounded-full -mr-2"></div>
+            </div>
+          </div>
         </div>
 
         {/* Availability Modal */}
@@ -206,7 +223,7 @@ const Doctorlist = () => {
           <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
             <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full overflow-hidden animate-in fade-in zoom-in duration-300">
               {/* Modal Header */}
-              <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-6 text-white relative">
+              <div className="bg-[#75B4DA] p-6 text-white relative">
                 <button
                   onClick={() => setSelectedDoctor(null)}
                   className="absolute top-4 right-4 p-1 rounded-full hover:bg-white/20 transition-colors"
@@ -215,13 +232,13 @@ const Doctorlist = () => {
                 </button>
                 <div className="flex items-center gap-4">
                   <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
-                    <span className="text-2xl font-bold text-blue-600">
+                    <span className="text-2xl font-bold text-[#75B4DA]">
                       {selectedDoctor.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
                     </span>
                   </div>
                   <div>
                     <h3 className="text-xl font-bold">{selectedDoctor.name}</h3>
-                    <p className="text-blue-100 text-sm">Availability Schedule</p>
+                    <p className="text-white text-sm">Availability Schedule</p>
                   </div>
                 </div>
               </div>
@@ -229,7 +246,7 @@ const Doctorlist = () => {
               {/* Modal Body - Availability Schedule */}
               <div className="p-6">
                 <div className="flex items-center gap-2 mb-4 text-gray-700">
-                  <Calendar className="w-5 h-5 text-blue-500" />
+                  <Calendar className="w-5 h-5 text-[#75B4DA]" />
                   <span className="font-semibold">
                     {availability ? `${availability.weekday}, ${availability.date}` : 'Available Times'}
                   </span>
@@ -238,17 +255,17 @@ const Doctorlist = () => {
                 <div className="space-y-3">
                   {availabilityLoading ? (
                     <div className="text-center py-8">
-                      <div className="w-8 h-8 border-4 border-blue-200 border-t-blue-500 rounded-full animate-spin mx-auto mb-3"></div>
+                      <div className="w-8 h-8 border-4 border-[#75B4DA] border-t-[#75B4DA] rounded-full animate-spin mx-auto mb-3"></div>
                       <p className="text-gray-500">Loading availability...</p>
                     </div>
                   ) : availability && availability.time_slots.length > 0 ? (
                     availability.time_slots.map((slot, index) => (
                       <div
                         key={index}
-                        className="bg-blue-50 rounded-lg p-4 border border-blue-100"
+                        className="bg-[#75B4DA] rounded-lg p-4 border border-[#75B4DA]"
                       >
                         <div className="flex items-center gap-2 text-gray-700">
-                          <Clock className="w-4 h-4 text-blue-500" />
+                          <Clock className="w-4 h-4 text-white" />
                           <span className="font-medium">{slot.start_time} - {slot.end_time}</span>
                         </div>
                       </div>

@@ -37,7 +37,7 @@ const StatCard = ({ value, label, suffix = "" }) => {
   
   return (
     <div className="text-center">
-      <div className="text-3xl lg:text-4xl font-bold text-blue-600 mb-2">
+      <div className="text-3xl lg:text-4xl font-bold text-[#75B4DA] mb-2">
         {count.toLocaleString()}{suffix}
       </div>
       <div className="text-sm lg:text-base text-gray-600 font-medium">
@@ -66,7 +66,7 @@ export default function Hero() {
   if (!heroData) {
     return (
       <section className="flex h-96 items-center justify-center">
-        <div className="animate-pulse text-lg font-medium text-blue-600">
+        <div className="animate-pulse text-lg font-medium text-[#75B4DA]">
           Loading...
         </div>
       </section>
@@ -170,7 +170,7 @@ export default function Hero() {
             {/* Left Content */}
             <div className="space-y-6 text-white">
               <div className="space-y-4">
-                <h1 className="font-heading font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight uppercase animate-slide-in-left text-blue-600 -mt-10">
+                <h1 className="font-heading font-bold text-4xl sm:text-5xl lg:text-6xl leading-tight uppercase animate-slide-in-left text-[#75B4DA] -mt-10">
                   {heroData.title}
                 </h1>
 
@@ -184,7 +184,7 @@ export default function Hero() {
                 <Button
                   asChild
                   size="lg"
-                  className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+                  className="bg-[#75B4DA] hover:bg-[#75B4DA] text-white font-semibold px-8 py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
                 >
                   <Link to="/screen">Screen Yourself</Link>
                 </Button>
@@ -192,7 +192,7 @@ export default function Hero() {
                   asChild
                   size="lg"
                   variant="outline"
-                  className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-semibold px-8 py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+                  className="border-2 border-[#75B4DA] text-[#75B4DA] hover:bg-[#75B4DA] hover:text-white font-semibold px-8 py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
                 >
                   <Link to="/services">Explore Services</Link>
                 </Button>

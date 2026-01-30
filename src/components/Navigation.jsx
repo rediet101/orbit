@@ -159,16 +159,17 @@ export function Navigation() {
   };
 
   return (
-    <nav 
-      className={cn(
-        "fixed z-50 transition-all duration-1000 ease-in-out",
-        isScrolled 
-          ? "top-0 left-1/2 -translate-x-1/2 w-[95%] max-w-7xl rounded-b-3xl bg-blue-50/95 backdrop-blur-md shadow-2xl border-x border-b border-blue-100 py-1" 
-          : "top-0 left-0 right-0 bg-black/10 backdrop-blur-[2px] py-1"
-      )}
-    >
-      <div className="max-w-7xl mx-auto px-6 sm:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-3 items-center h-17">
+    <nav className="fixed top-0 left-0 right-0 z-50 pointer-events-none">
+      <div 
+        className={cn(
+          "transition-all duration-1000 ease-in-out pointer-events-auto",
+          isScrolled 
+            ? "mx-auto w-[95%] max-w-7xl rounded-b-3xl bg-[#EBEBEB] backdrop-blur-md shadow-2xl border-x border-b border-blue-100 py-1" 
+            : "w-full bg-black/10 backdrop-blur-[2px] py-1"
+        )}
+      >
+        <div className="max-w-7xl mx-auto px-6 sm:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 items-center h-17">
 
           {/* LEFT: LOGO */}
           <div className="flex justify-start">
@@ -192,9 +193,9 @@ export function Navigation() {
                       className={cn(
                         "flex items-center gap-1 transition-colors duration-200 relative h-17 whitespace-nowrap",
                         isScrolled 
-                          ? "text-sm lg:text-lg text-gray-700 hover:text-blue-600" 
-                          : "text-md lg:text-lg text-white hover:text-blue-400",
-                        pathname.startsWith("/media") && (isScrolled ? "text-blue-600 font-semibold" : "text-blue-400 font-semibold")
+                          ? "text-sm lg:text-lg text-gray-700 hover:text-[#75B4DA]" 
+                          : "text-md lg:text-lg text-white hover:text-[#75B4DA]",
+                        pathname.startsWith("/media") && (isScrolled ? "text-[#75B4DA] font-semibold" : "text-[#75B4DA] font-semibold")
                       )}
                     >
                       {item.label}
@@ -205,7 +206,7 @@ export function Navigation() {
                         )} 
                       />
                       {pathname.startsWith("/media") && (
-                        <span className="absolute bottom-2 left-0 right-0 h-1 bg-blue-500 rounded-full"></span>
+                        <span className="absolute bottom-2 left-0 right-0 h-1 bg-[#75B4DA] rounded-full"></span>
                       )}
                     </button>
                     
@@ -217,8 +218,8 @@ export function Navigation() {
                             to={subItem.href}
                             onClick={handleLinkClick}
                             className={cn(
-                              "block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors",
-                              pathname === subItem.href && "bg-blue-50 text-blue-600 font-semibold"
+                              "block px-4 py-2 text-gray-700 hover:bg-[#75B4DA]/10 hover:text-[#75B4DA] transition-colors",
+                              pathname === subItem.href && "bg-[#75B4DA]/10 text-[#75B4DA] font-semibold"
                             )}
                           >
                             {subItem.label}
@@ -233,14 +234,14 @@ export function Navigation() {
                     className={cn(
                       "flex items-center transition-colors duration-200 relative h-16 whitespace-nowrap",
                       isScrolled 
-                        ? "text-sm lg:text-lg text-gray-700 hover:text-blue-600" 
-                        : "text-base lg:text-lg text-white hover:text-blue-400",
-                      pathname === item.href && (isScrolled ? "text-blue-600 font-semibold" : "text-blue-400 font-semibold")
+                        ? "text-sm lg:text-lg text-gray-700 hover:text-[#75B4DA]" 
+                        : "text-base lg:text-lg text-white hover:text-[#75B4DA]",
+                      pathname === item.href && (isScrolled ? "text-[#75B4DA] font-semibold" : "text-[#75B4DA] font-semibold")
                     )}
                   >
                     {item.label}
                     {pathname === item.href && (
-                      <span className="absolute bottom-2 left-0 right-0 h-1 bg-blue-500 rounded-full"></span>
+                      <span className="absolute bottom-2 left-0 right-0 h-1 bg-[#75B4DA] rounded-full"></span>
                     )}
                   </Link>
                 )}
@@ -255,7 +256,7 @@ export function Navigation() {
                 to="/appointment" 
                 className={cn(
                   "p-2 rounded-full transition-all duration-300",
-                  isScrolled ? "text-blue-600 hover:bg-blue-100" : "text-blue-400 hover:bg-white/10"
+                  isScrolled ? "text-[#75B4DA] hover:bg-[#75B4DA]/10" : "text-[#75B4DA] hover:bg-white/10"
                 )}
                 title="Book Appointment"
               >
@@ -265,7 +266,7 @@ export function Navigation() {
                 to="/screen" 
                 className={cn(
                   "p-2 rounded-full transition-all duration-300",
-                  isScrolled ? "text-blue-600 hover:bg-blue-100" : "text-blue-400 hover:bg-white/10"
+                  isScrolled ? "text-[#75B4DA] hover:bg-[#75B4DA]/10" : "text-[#75B4DA] hover:bg-white/10"
                 )}
                 title="Screen Yourself"
               >
@@ -280,7 +281,7 @@ export function Navigation() {
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className={cn(
                   "p-2 rounded-full transition-all duration-300",
-                  isScrolled ? "text-blue-600 hover:bg-blue-100" : "text-white hover:bg-blue-400"
+                  isScrolled ? "text-[#75B4DA] hover:bg-[#75B4DA]/10" : "text-white hover:bg-[#75B4DA]"
                 )}
               >
                 {isMobileMenuOpen ? (
@@ -295,7 +296,12 @@ export function Navigation() {
 
         {/* MOBILE NAV */}
         {isMobileMenuOpen && (
-          <div className="md:hidden border-t border-white/20 bg-black/80 backdrop-blur-md animate-slideDown">
+          <div className={cn(
+            "md:hidden border-t backdrop-blur-md animate-slideDown",
+            isScrolled 
+              ? "bg-[#75B4DA]/10 border-[#75B4DA]/20" 
+              : "bg-black/80 border-white/20"
+          )}>
             <div className="px-2 pt-3 pb-4 space-y-1">
               {navItems.map((item, index) => (
                 <div key={index}>
@@ -307,8 +313,8 @@ export function Navigation() {
                         className={cn(
                           "w-full flex items-center justify-between px-3 py-2 text-base font-medium rounded-md transition-colors",
                           pathname.startsWith("/media")
-                            ? "text-blue-400 bg-blue-600/10"
-                            : "text-white hover:text-blue-400 hover:bg-white/10"
+                            ? "text-[#75B4DA] bg-[#75B4DA]/10"
+                            : "text-white hover:text-[#75B4DA] hover:bg-white/10"
                         )}
                       >
                         {item.label}
@@ -331,8 +337,8 @@ export function Navigation() {
                               className={cn(
                                 "block px-3 py-2 text-sm rounded-md transition-colors",
                                 pathname === subItem.href
-                                  ? "text-blue-400 bg-blue-600/10 font-semibold"
-                                  : "text-gray-300 hover:text-blue-400 hover:bg-white/10"
+                                  ? "text-[#75B4DA] bg-[#75B4DA]/10 font-semibold"
+                                  : "text-gray-300 hover:text-[#75B4DA] hover:bg-white/10"
                               )}
                             >
                               {subItem.label}
@@ -349,8 +355,8 @@ export function Navigation() {
                       className={cn(
                         "block px-3 py-2 text-base font-medium rounded-md transition-colors",
                         pathname === item.href
-                          ? "text-blue-400 bg-blue-600/10"
-                          : "text-white hover:text-blue-400 hover:bg-white/10"
+                          ? "text-[#75B4DA] bg-[#75B4DA]/10"
+                          : "text-white hover:text-[#75B4DA] hover:bg-white/10"
                       )}
                     >
                       {item.label}
@@ -361,7 +367,7 @@ export function Navigation() {
 
               <div className="px-3 pt-2 space-y-2">
                 <Button
-                  className="w-full rounded-md bg-blue-600 hover:bg-blue-700 font-semibold"
+                  className="w-full rounded-md bg-[#75B4DA] hover:bg-[#75B4DA]/80 font-semibold"
                   asChild
                 >
                   <Link to="/appointment" onClick={handleLinkClick}>
@@ -380,6 +386,8 @@ export function Navigation() {
             </div>
           </div>
         )}
+      </div>
+
       </div>
 
       {/* Animation */}

@@ -98,6 +98,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Phone, Mail, MessageCircle, MapPin, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
+import CTA from "../CTA";
 
 function ReachoutSection() {
   const contactMethods = [
@@ -136,7 +137,7 @@ function ReachoutSection() {
   return (
     <section className="relative py-20 lg:py-28 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#DFF3FF] via-blue-50 to-[#E6F7FF]"></div>
+      <div className="absolute inset-0 bg-[#EBEBEB]"></div>
       
       {/* Floating Bubbles */}
       <div className="absolute top-10 left-[5%] animate-float">
@@ -191,7 +192,7 @@ function ReachoutSection() {
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-16 space-y-4">
-          <h2 className="text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
+          <h2 className="text-4xl lg:text-6xl font-bold bg-clip-text text-transparent bg-[#75B4DA]">
             Still Have Questions?
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -217,30 +218,30 @@ function ReachoutSection() {
                 <CardHeader className="relative z-10 text-center pb-6">
                   <div className="flex justify-center mb-5">
                     <div className="p-4 bg-primary/10 backdrop-blur-sm rounded-2xl border border-primary/20 group-hover:bg-primary/15 group-hover:scale-110 transition-all duration-300">
-                      <Icon className="h-10 w-10 text-primary" />
+                      <Icon className="h-10 w-10 text-[#75B4DA]" />
                     </div>
                   </div>
-                  <CardTitle className="text-xl lg:text-2xl font-bold text-foreground">
+                  <CardTitle className="text-xl lg:text-2xl font-bold text-[#75B4DA]">
                     {method.title}
                   </CardTitle>
-                  <p className="text-sm text-muted-foreground mt-2">
+                  <p className="text-sm text-[#75B4DA] mt-2">
                     {method.desc}
                   </p>
                 </CardHeader>
 
                 <CardContent className="relative z-10 space-y-4 text-center">
                   <div>
-                    <p className="font-bold text-foreground text-lg">
+                    <p className="font-bold text-[#75B4DA] text-lg">
                       {method.detail}
                     </p>
-                    <p className="text-xs text-muted-foreground mt-1">
+                    <p className="text-xs text-[#75B4DA] mt-1">
                       {method.sub}
                     </p>
                   </div>
 
                   <Button
                     asChild
-                    className={`w-full h-12 text-white font-semibold shadow-lg bg-gradient-to-r ${method.gradient} hover:shadow-xl hover:scale-105 transition-all duration-300`}
+                    className={`w-full h-12 text-white font-semibold shadow-lg bg-[#75B4DA] hover:shadow-xl hover:scale-105 hover:bg-[#75B4DA]/80 transition-all duration-300`}
                   >
                     <Link to={method.href} className="flex items-center justify-center gap-2">
                       {method.btnText}
@@ -250,10 +251,10 @@ function ReachoutSection() {
                 </CardContent>
 
                 {/* Hover Glow Border */}
-                <div className="absolute inset-0 rounded-3xl border-2 border-transparent group-hover:border-primary/30 transition-colors pointer-events-none"></div>
+                <div className="absolute inset-0 rounded-3xl border-2 border-transparent group-hover:border-[#75B4DA] transition-colors pointer-events-none"></div>
 
                 {/* Decorative Orb */}
-                <div className="absolute -top-10 -right-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#75B4DA]/10 rounded-full blur-3xl -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </Card>
             );
           })}

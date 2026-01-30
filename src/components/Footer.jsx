@@ -100,7 +100,10 @@ import logo from "../assets/Logo/Logow.svg";
 
 export function Footer() {
   return (
-    <footer className="bg-[#1A73E8] text-white py-16">
+    <footer 
+      className="text-white py-16"
+      style={{ background: 'linear-gradient(to bottom, rgba(65, 130, 170, 0.95) 0%, #75B4DA 100%)' }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-10">
           {/* Brand */}
