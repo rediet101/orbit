@@ -112,7 +112,7 @@ function TestimonialPreview() {
                   transition={{ duration: 0.3 }}
                 >
                   <img
-                    src="/src/assets/ceo23.png"
+                    src="/ceo23.png"
                     alt="Dr. Akeza Teame"
                     className="w-96 h-[450px] lg:w-[450px] lg:h-[450px] object-cover object-top rounded-lg shadow-2xl"
                   />
